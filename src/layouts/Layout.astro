@@ -1,13 +1,58 @@
+---
+const { title, description, image = "/screenshot.jpg" } = Astro.props;
+
+const baseUrl = "https://www.example.com";
+const pageUrl = `${baseUrl}${Astro.url.pathname}`;
+const siteName = "Cinemagny";
+
+// Import des polices @fontsource
+import "@fontsource/playfair";
+import "@fontsource/playfair-display";
+import "@fontsource/montserrat";
+// Import du fichier CSS pour les règles de polices
+import "../styles/global.css";
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+
+    <title>{title ? `${title} — ${siteName}` : siteName}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:site" content="@yourtwitterhandle" />
+
+    <link rel="canonical" href={pageUrl} />
+
+    <!-- Les liens preconnect pour Google Fonts ne sont plus nécessaires avec @fontsource -->
+    <link rel="dns-prefetch" href={pageUrl} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>Cinemagny</title>
   </head>
   <body>
-    <slot />
+    <main>
+      <slot />
+    </main>
+    <script type="module" src="/src/js/script.js"></script>
   </body>
 </html>

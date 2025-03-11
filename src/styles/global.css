@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+@theme{
+    --font-playfair: 'Playfair', sans-serif;
+    --font-playfair-display: 'Playfair Display', sans-serif;
+    --font-monserrat: 'Montserrat', sans-serif;
+
+    --color-background: oklch(98.89% 0.0105 106.59);
+    --color-green: oklch(87.31% 0.0708 143.7);
+    --color-blue: oklch(74.51% 0.0725 223.05);
+    --color-brown : oklch(77.18% 0.0626 72.36);
+    --color-black: oklch(0% 0 0);
+    --color-white: oklch(100% 0 0);
+} 
+
+@layer base {
+    h1 {
+        @apply font-playfair; 
+    }
+    h2 {
+        @apply font-playfair-display; 
+    }
+
+    h3 {
+        @apply font-playfair; 
+    }
+
+    body{
+        @apply font-monserrat; 
+        @apply text-black; 
+    }
+}
