@@ -58,3 +58,8 @@ export async function getActiviteById(id) {
   const activite = await pb.collection("activite").getOne(id);
   return activite;
 }
+
+export async function getInviteById(id) {
+  const invite = await pb.collection("invite").getOne(id);
+  return invite;
+}

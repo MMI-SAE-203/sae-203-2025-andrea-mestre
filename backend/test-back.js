@@ -3,6 +3,7 @@ import { getActiviteByDate } from "./backend.mjs";
 import { getInviteByName } from "./backend.mjs";
 import { getFilmById } from "./backend.mjs";
 import { getActiviteById } from "./backend.mjs";
+import { getInviteById } from "./backend.mjs";
 
 /*
 try {
@@ -43,3 +44,11 @@ try {
 }
 
 */
+
+try {
+  const id = "0ld21498lj382j2";
+  const invite = await getInviteById(id);
+  console.table(invite);
+} catch (error) {
+  console.error(error);
+}
