@@ -53,3 +53,8 @@ export async function getFilmById(id) {
   const film = await pb.collection("film").getOne(id);
   return film;
 }
+
+export async function getActiviteById(id) {
+  const activite = await pb.collection("activite").getOne(id);
+  return activite;
+}

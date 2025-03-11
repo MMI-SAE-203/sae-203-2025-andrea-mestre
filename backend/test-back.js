@@ -2,6 +2,7 @@ import { getFilmByDate } from "./backend.mjs";
 import { getActiviteByDate } from "./backend.mjs";
 import { getInviteByName } from "./backend.mjs";
 import { getFilmById } from "./backend.mjs";
+import { getActiviteById } from "./backend.mjs";
 
 /*
 try {
@@ -32,4 +33,13 @@ try {
 } catch (error) {
   console.error(error);
 }
+
+try {
+  const id = "b852s87k9n7swqr";
+  const activite = await getActiviteById(id);
+  console.table(activite);
+} catch (error) {
+  console.error(error);
+}
+
 */
