@@ -32,3 +32,19 @@ export async function getActiviteByDate() {
     return [];
   }
 }
+
+export async function getInviteByName() {
+  try {
+    let invites = await pb.collection("invite").getFullList({
+      sort: "nom",
+    });
+    invites = invites.map((invite) => {
+      invite.photo = pb.files.getURL(invite, invite.photo);
+      return invite;
+    });
+    return invites;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
