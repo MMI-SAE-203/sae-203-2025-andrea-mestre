@@ -17,16 +17,20 @@
     h1 {
         @apply font-playfair; 
     }
-    h2 {
+    h3 {
         @apply font-playfair-display; 
     }
 
-    h3 {
-        @apply font-playfair; 
+    h2 {
+        @apply font-playfair text-black text-4xl text-center pb-20 ; 
     }
 
     body{
-        @apply font-monserrat; 
-        @apply text-black; 
+        @apply font-monserrat  text-black bg-blue; 
+       
+    }
+
+    a {
+        @apply uppercase text-xs text-center ; 
     }
 }

@@ -11,8 +11,8 @@ import "@fontsource/playfair-display";
 import "@fontsource/montserrat";
 // Import du fichier CSS pour les règles de polices
 import "../styles/global.css";
+import Header from "../components/Header.astro";
 ---
-
 <!doctype html>
 <html lang="fr">
   <head>
@@ -50,6 +50,7 @@ import "../styles/global.css";
     <title>Cinemagny</title>
   </head>
   <body>
+    <Header />
     <main>
       <slot />
     </main>
