@@ -63,3 +63,22 @@ export async function getInviteById(id) {
   const invite = await pb.collection("invite").getOne(id);
   return invite;
 }
+
+export async function getActiviteByInviteId(inviteId) {
+  const activites = await pb.collection("activite").getFullList({
+    filter: `anime_invite ="${inviteId}"`,
+    sort: "date_activite",
+  });
+  return activites;
+}
+
+export async function getActiviteByName(inviteName) {
+  const invites = await pb.collection("invite").getFullList({
+    filter: `nom="${inviteName}"`,
+    expand: "activite",
+    sort: "nom",
+  });
+  return invites;
+}
+
+//Fonction pour les formules du festival//

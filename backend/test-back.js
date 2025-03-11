@@ -4,6 +4,9 @@ import { getInviteByName } from "./backend.mjs";
 import { getFilmById } from "./backend.mjs";
 import { getActiviteById } from "./backend.mjs";
 import { getInviteById } from "./backend.mjs";
+import { getActiviteByInviteId } from "./backend.mjs";
+import { getActiviteByName } from "./backend.mjs";
+
 
 /*
 try {
@@ -43,12 +46,29 @@ try {
   console.error(error);
 }
 
-*/
 
 try {
   const id = "0ld21498lj382j2";
   const invite = await getInviteById(id);
   console.table(invite);
+} catch (error) {
+  console.error(error);
+}
+
+try {
+  const inviteId = "0ld21498lj382j2";
+  const activite = await getActiviteByInviteId(inviteId);
+  console.table(activite);
+} catch (error) {
+  console.error(error);
+}
+
+*/
+
+try {
+  const inviteName = "Albouy";
+  const activite = await getActiviteByName(inviteName);
+  console.table(activite);
 } catch (error) {
   console.error(error);
 }
