@@ -82,3 +82,15 @@ export async function getActiviteByName(inviteName) {
 }
 
 //Fonction pour les formules du festival//
+
+export async function getFormuleByPrice() {
+  try {
+    let formules = await pb.collection("formule").getFullList({
+      sort: "prix",
+    });
+    return formules;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
