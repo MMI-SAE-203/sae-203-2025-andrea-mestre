@@ -16,3 +16,19 @@ export async function getFilmByDate() {
     return [];
   }
 }
+
+export async function getActiviteByDate() {
+  try {
+    let activite = await pb.collection("activite").getFullList({
+      sort: "date_activite",
+    });
+    activite = activite.map((activite) => {
+      activite.image = pb.files.getURL(activite, activite.image);
+      return activite;
+    });
+    return activite;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
