@@ -48,3 +48,8 @@ export async function getInviteByName() {
     return [];
   }
 }
+
+export async function getFilmById(id) {
+  const film = await pb.collection("film").getOne(id);
+  return film;
+}
