@@ -26,18 +26,18 @@ const formules = await getFormuleByPrice();
     </p>
 
     <div class="flex justify-center items-center">
-      <a class="bg-background px-7 py-2.5" href="/festival"
+      <a class="bg-background px-7 " href="/festival"
         >En savoir plus sur le festival</a
       >
     </div>
   </div>
 
-  <section>
-    <header class="">
-      <h2 class="">Les Films à la Une</h2>
+  <section class="py-44">
+    <header>
+      <h2>Les Films à la Une</h2>
     </header>
 
-    <div class="grid grid-cols-2 justify-center items-center">
+    <div class="grid grid-cols-2 gap-4 justify-center items-center">
       <img
         class="w-36 h-56 pb-4 mx-auto"
         src={AfficheTnw.src}
@@ -60,7 +60,8 @@ const formules = await getFormuleByPrice();
       />
     </div>
 
-    <div class="flex justify-center items-center">
+    <div class="flex justify-center items-center mt-4">
+      <!-- Add margin-top to the div -->
       <a class="bg-blue text-white px-7 py-2.5" href="/programme"
         >la programmation complète</a
       >
