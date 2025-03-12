@@ -33,4 +33,8 @@
     a {
         @apply uppercase text-xs text-center mt-11; 
     }
+
+    section{
+        @apply bg-background
+    }
 }

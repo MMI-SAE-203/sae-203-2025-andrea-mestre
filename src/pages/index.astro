@@ -4,6 +4,9 @@ import AfficheTnw from "../assets/img/affiche_theneighborswindow.webp";
 import affichePupille from "../assets/img/affiche_pupille.webp";
 import AfficheParasite from "../assets/img/affiche_parasite.webp";
 import AfficheLesGardiennes from "../assets/img/affiche_gardiennes.webp";
+import Cardformule from "../components/Cardformule.astro";
+import { getFormuleByPrice } from "../../backend/backend.mjs";
+const formules = await getFormuleByPrice();
 ---
 
 <Layout>
@@ -29,7 +32,7 @@ import AfficheLesGardiennes from "../assets/img/affiche_gardiennes.webp";
     </div>
   </div>
 
-  <section class="bg-background p-0">
+  <section>
     <header class="">
       <h2 class="">Les Films à la Une</h2>
     </header>
@@ -68,5 +71,17 @@ import AfficheLesGardiennes from "../assets/img/affiche_gardiennes.webp";
     <header>
       <h2>Formules & Tarifs</h2>
     </header>
+
+    <ul class="flex justify-center items-center flex-col gap-7">
+      {
+        formules.map((formule) => (
+          <li>
+            <Cardformule {...formule} />
+          </li>
+        ))
+      }
+    </ul>
+
+    <a href="/billeterie"></a>
   </section>
 </Layout>
