@@ -31,10 +31,12 @@
     }
 
     a {
-        @apply uppercase text-xs text-center mt-11; 
+        @apply uppercase text-sm text-center mt-11 py-4  ; 
     }
 
     section{
-        @apply bg-background
+        @apply bg-background pb-44
     }
+
+  
 }

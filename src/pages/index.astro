@@ -6,6 +6,9 @@ import AfficheParasite from "../assets/img/affiche_parasite.webp";
 import AfficheLesGardiennes from "../assets/img/affiche_gardiennes.webp";
 import Cardformule from "../components/Cardformule.astro";
 import { getFormuleByPrice } from "../../backend/backend.mjs";
+import IconIut from "/src/assets/icons/icon-ufc.svg";
+import IconMmi from "/src/assets/icons/icon-MMI_montbéliard.png";
+import IconVosges from "/src/assets/icons/departement.svg";
 const formules = await getFormuleByPrice();
 ---
 
@@ -26,18 +29,18 @@ const formules = await getFormuleByPrice();
     </p>
 
     <div class="flex justify-center items-center">
-      <a class="bg-background px-7 " href="/festival"
+      <a class="bg-background mb-6 px-13 shadow-lg" href="/festival"
         >En savoir plus sur le festival</a
       >
     </div>
   </div>
 
-  <section class="py-44">
+  <section>
     <header>
       <h2>Les Films à la Une</h2>
     </header>
 
-    <div class="grid grid-cols-2 gap-4 justify-center items-center">
+    <div class="grid grid-cols-2 justify-center items-center">
       <img
         class="w-36 h-56 pb-4 mx-auto"
         src={AfficheTnw.src}
@@ -62,7 +65,7 @@ const formules = await getFormuleByPrice();
 
     <div class="flex justify-center items-center mt-4">
       <!-- Add margin-top to the div -->
-      <a class="bg-blue text-white px-7 py-2.5" href="/programme"
+      <a class="bg-blue text-white px-14 shadow-lg" href="/programme"
         >la programmation complète</a
       >
     </div>
@@ -73,7 +76,7 @@ const formules = await getFormuleByPrice();
       <h2>Formules & Tarifs</h2>
     </header>
 
-    <ul class="flex justify-center items-center flex-col gap-7">
+    <ul class="flex justify-center items-center flex-col gap-20">
       {
         formules.map((formule) => (
           <li>
@@ -83,6 +86,64 @@ const formules = await getFormuleByPrice();
       }
     </ul>
 
-    <a href="/billeterie"></a>
+    <div class="flex justify-center items-center">
+      <a class="bg-brown mb-6 px-19 shadow-lg" href="/billeterie"
+        >L'ensemble de nos tarifs</a
+      >
+    </div>
+  </section>
+
+  <section>
+    <header>
+      <h2>Notre Engagement Écoresponsable</h2>
+    </header>
+
+    <p class="px-7">
+      L'écoresponsabilité est au cœur de notre festival. Nous nous engageons à
+      réduire notre impact environnemental en privilégiant des pratiques
+      durables, de l'utilisation de matériaux recyclés à la promotion de
+      transports verts. Ensemble, faisons du cinéma un vecteur de changement
+      pour un avenir plus respectueux de la planète.
+    </p>
+
+    <div class="flex justify-center items-center">
+      <a
+        class="bg-blue text-white px-8 shadow-lg"
+        href="/ecoresponsabilite"
+        aria-label="Aller à notre page engagement"
+      >
+        Nos engagements écoresponsables
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <header>
+      <h2>Nos Partenaires</h2>
+    </header>
+
+    <div class="flex justify-center items-center flex-col ">
+      <a
+        href="https://www.iut-nfc.univ-fcomte.fr/"
+        target="_blank"
+        aria-label="Visite le site partenaire UFC Nord Franche comté"
+      >
+        <img src={IconIut.src} alt="icon-itu" />
+      </a>
+      <a
+        href="https://www.iut-nfc.univ-fcomte.fr/b-u-t-metiers-du-multimedia-et-de-linternet/"
+        target="_blank"
+        aria-label="Visite le site partenaire MMI Montbéliard"
+      >
+        <img src={IconMmi.src} alt="icon-mmi" />
+      </a>
+      <a href="https://www.vosges.fr/" target="_blank">
+        <img
+          src={IconVosges.src}
+          alt="icon-vosges"
+          aria-label="Visite le site partenaire des Vosges "
+        />
+      </a>
+    </div>
   </section>
 </Layout>
