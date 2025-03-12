@@ -1,7 +1,223 @@
 ---
-import IconLogo from "/src/assets/icons/logo-festival-cinemagny.svg";
+import IconLogo from "../assets/icons/logo-festival_cinemagny.svg";
 import IconMenu from "/src/assets/icons/icon-menu.svg";
-import IconCaddie from "/src/assets/icons/caddie.svg";
+import IconCaddie from "../assets/icons/panier.svg";
+import IconClose from "../assets/icons/icon-croix.svg";
+import IconInsta from "/src/assets/icons/icon-instagram.svg";
+import IconFacebook from "/src/assets/icons/icon-facebook.svg";
+import IconTwitter from "/src/assets/icons/icon-twitter.svg";
 ---
 
-<img src={IconMenu.src} alt="boutton menu" />
+
+<div class="flex justify-between items-center p-7 md:px-12">
+    <div class="md:hidden">
+        <img
+            class="w-10 cursor-pointer menu-btn"
+            src={IconMenu.src}
+            alt="boutton menu"
+            aria-expanded="false"
+        />
+    </div>
+    
+    <div class="hidden md:flex md:flex-1 md:items-center">
+        <nav class="desktop-nav">
+            <ul class="flex space-x-6">
+                <li><a href="/festival" class="text-white font-playfair-display text-3xl uppercase  transition duration-300 hover:text-black transform hover:scale-110">Festival</a></li>
+                <li><a href="/programme" class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110">Programme</a></li>
+                <li><a href="/activities" class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110">Activités</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+
+    <div>
+        <a href="/" aria-label="Retourner à l'accueil"  >
+            <img src={IconLogo.src} alt="logoFestival" />
+        </a>
+    </div>
+    
+    <div class="md:flex-1 flex justify-end items-center">
+  
+        <div class="hidden md:flex md:mr-6">
+            <ul class="flex space-x-6">
+                <li><a href="/billeterie" class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110">Billetterie</a></li>
+                <li><a href="/ecoresponsabilite" class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110">Écoresponsabilité</a></li>
+                <li><a href="/contact" class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110">Contact</a></li>
+            </ul>
+        </div>
+        
+
+        <a aria-label="aller au panier" class="transform hover:scale-110 transition duration-300 p-0">
+            <img class="w-11 md:w-10" src={IconCaddie.src} alt="panier" />
+        </a>
+    </div>
+</div>
+
+
+<nav
+    class="menu fixed top-0 left-0 w-full h-full bg-blue transform transition-transform duration-400 ease-in-out -translate-x-full md:hidden"
+    aria-hidden="true"
+    data-hidden="true"
+>
+    <div class="p-15 pt-20">
+        <ul class="flex flex-col gap-15 items-start space-y-4">
+            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item">
+                <a
+                    href="/"
+                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black">Accueil</a
+                >
+            </li>
+
+            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-75">
+                <a
+                    href="/festival"
+                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black"
+                    >Festival</a
+                >
+            </li>
+            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-150">
+                <a
+                    href="/programme"
+                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black"
+                    >Programme</a
+                >
+            </li>
+            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-225">
+                <a
+                    href="/activites"
+                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black"
+                    >Activités</a
+                >
+            </li>
+            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-300">
+                <a
+                    href="/billeterie"
+                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black"
+                    >Billetterie</a
+                >
+            </li>
+            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-375">
+                <a
+                    href="/ecoresponsabilite"
+                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black"
+                    >Écoresponsabilité</a
+                >
+            </li>
+            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-450">
+                <a
+                    href="/infos-pratiques"
+                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black"
+                    >Infos pratiques</a
+                >
+            </li>
+            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-525">
+                <a
+                    href="/contact"
+                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black">Contact</a
+                >
+            </li>
+        </ul>
+
+        <button
+            class="menu-close-btn flex absolute right-15 top-19 transform transition-all duration-300 hover:rotate-90 hover:scale-110"
+            aria-label="Fermer le menu"
+        >
+            <img class="w-10" src={IconClose.src} alt="Fermer le menu" />
+        </button>
+    </div>
+
+    <div class="flex justify-center items-center py-15">
+        <ul class="flex flex-row gap-15" aria-label="Nos Réseaux sociaux">
+            <li>
+                <a
+                    href="https://www.facebook.com/mmimontbeliard/?locale=fr_FR"
+                    aria-label="Viste notre facebook"
+                    class="block transform hover:scale-110 transition duration-300"
+                >
+                    <img
+                        class="w-12"
+                        src={IconFacebook.src}
+                        alt="icon-facebook"
+                    />
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://www.instagram.com/mmi_montbeliard/p/C1KAs9_N_Ed/?img_index=1"
+                    aria-label="Visite notre instagram"
+                    class="block transform hover:scale-110 transition duration-300"
+                >
+                    <img
+                        class="w-12"
+                        src={IconInsta.src}
+                        alt="icon instagram"
+                    />
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://twitter.com/mmimontbeliard"
+                    aria-label="Visite notre twitter"
+                    class="block transform hover:scale-110 transition duration-300"
+                >
+                    <img
+                        class="w-15"
+                        src={IconTwitter.src}
+                        alt="icon twitter"
+                    />
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.querySelector(".menu-btn");
+        const closeBtn = document.querySelector(".menu-close-btn");
+        const nav = document.querySelector(".menu");
+        const page = document.body;
+
+        function openMenu() {
+            toggle.setAttribute("aria-expanded", "true");
+            nav.setAttribute("aria-hidden", "false");
+            nav.setAttribute("data-hidden", "false");
+            nav.classList.remove("-translate-x-full");
+            page.classList.add("overflow-hidden");
+            animateMenuItems();
+        }
+
+        function closeMenu() {
+            toggle.setAttribute("aria-expanded", "false");
+            nav.setAttribute("aria-hidden", "true");
+            nav.setAttribute("data-hidden", "true");
+            nav.classList.add("-translate-x-full");
+            page.classList.remove("overflow-hidden");
+            resetMenuItems();
+        }
+
+        function animateMenuItems() {
+            const menuItems = document.querySelectorAll(".menu-item");
+            menuItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.remove("translate-x-[-50px]", "opacity-0");
+                }, index * 75);
+            });
+        }
+
+        function resetMenuItems() {
+            const menuItems = document.querySelectorAll(".menu-item");
+            menuItems.forEach((item) => {
+                item.classList.add("translate-x-[-50px]", "opacity-0");
+            });
+        }
+
+        if (toggle && nav) {
+            toggle.addEventListener("click", openMenu);
+
+            if (closeBtn) {
+                closeBtn.addEventListener("click", closeMenu);
+            }
+        }
+    });
+</script>

@@ -6,7 +6,7 @@ import IconMontagne from "/src/assets/icons/img-montagne.svg";
 ---
 
 <footer>
-    <ul class="flex justify-center items-center flex-col gap-10 pt-10 pb-5">
+    <ul class="flex justify-center items-center flex-col gap-10 pt-10">
         <li>
             <a
                 class="text-white text-xl font-bold"
@@ -35,36 +35,46 @@ import IconMontagne from "/src/assets/icons/img-montagne.svg";
         </li>
     </ul>
 
-    <ul class="flex justify-center items-center gap-10">
-        <li>
-            <a
-                href="https://www.instagram.com/mmi_montbeliard/"
-                aria-label="Visite notre instagram"
-            >
-                <img src={IconInsta.src} alt="icon-intagram" />
-            </a>
-        </li>
+    <div class="py-10 ">
+        <ul class="flex justify-center items-center gap-10">
+            <li>
+                <a
+                    href="https://www.instagram.com/mmi_montbeliard/"
+                    aria-label="Visite notre instagram"
+                >
+                    <img class="w-12" src={IconInsta.src} alt="icon-intagram" />
+                </a>
+            </li>
 
-        <li>
-            <a
-                href="https://www.facebook.com/mmimontbeliard/?locale=fr_FR"
-                aria-label="visite notre facebook"
-            >
-                <img src={IconFacebook.src} alt="icon-facebook" />
-            </a>
-        </li>
+            <li>
+                <a
+                    href="https://www.facebook.com/mmimontbeliard/?locale=fr_FR"
+                    aria-label="visite notre facebook"
+                >
+                    <img
+                        class="w-12"
+                        src={IconFacebook.src}
+                        alt="icon-facebook"
+                    />
+                </a>
+            </li>
 
-        <li>
-            <a
-                href="https://x.com/MMImontbeliard/status/1365345886981656577"
-                aria-label="visite notre twitter"
-            >
-                <img src={IconTwitter.src} alt="icon-twitter" />
-            </a>
-        </li>
-    </ul>
+            <li>
+                <a
+                    href="https://x.com/MMImontbeliard/status/1365345886981656577"
+                    aria-label="visite notre twitter"
+                >
+                    <img
+                        class="w-15"
+                        src={IconTwitter.src}
+                        alt="icon-twitter"
+                    />
+                </a>
+            </li>
+        </ul>
+    </div>
 
-    <div class="flex justify-center items-center py-5">
+    <div class="flex justify-center items-center ">
         <p class="text-white text-center text-xs w-60">
             Ce site est un projet réalisé en 2024 dans le cadre d'un exercice
             pédagogique au département MMi de Montbéliard
