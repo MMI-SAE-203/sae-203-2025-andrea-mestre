@@ -103,8 +103,6 @@ export async function getActiviteByName(inviteName) {
   return invites;
 }
 
-//Fonction pour les formules du festival//
-
 export async function getFormuleByPrice() {
   try {
     let formules = await pb.collection("formule").getFullList({
@@ -121,4 +119,19 @@ export async function getFormuleByPrice() {
 export async function getFilmsFeatured(limit = 4) {
   const allFilms = await getFilmByDate();
   return allFilms.slice(0, limit); 
+}
+
+export async function getEquipe() {
+  try {
+    let equipe = await pb.collection("equipe").getFullList({
+    });
+    equipe = equipe.map((equipe) => {
+      equipe.photo = pb.files.getURL(equipe, equipe.photo);
+      return equipe;
+    });
+    return equipe;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 }

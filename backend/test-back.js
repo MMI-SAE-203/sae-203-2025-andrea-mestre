@@ -7,6 +7,7 @@ import { getInviteById } from "./backend.mjs";
 import { getActiviteByInviteId } from "./backend.mjs";
 import { getActiviteByName } from "./backend.mjs";
 import { getFormuleByPrice } from "./backend.mjs";
+import { getEquipe } from "./backend.mjs";
 
 
 /*
@@ -72,10 +73,17 @@ try {
 } catch (error) {
   console.error(error);
 }
-*/
+
 try {
   const formules = await getFormuleByPrice();
   console.table(formules);
+} catch (error) {
+  console.error(error);
+}
+  */
+try {
+  const equipe = await getEquipe();
+  console.table(equipe);
 } catch (error) {
   console.error(error);
 }
