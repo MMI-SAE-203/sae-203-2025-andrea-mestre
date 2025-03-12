@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getFilmById } from "../../../backend/backend.mjs";
-const {id} = Astro.params;
+const { id } = Astro.params;
 const film = await getFilmById(id);
 
 if (!film) {
@@ -10,5 +10,12 @@ if (!film) {
 ---
 
 <Layout>
-
+    <section>
+        <div class="flex justify-start items-center flex-col">
+            <img class="rounded-lg" src={film.affiche} alt="affiche du film" />
+            <h1 class="text-6xl font-playfair-display">{film.titre}</h1>
+            <p>{film.realisateur}</p>
+            <p>{film.genre}</p>
+        </div>
+    </section>
 </Layout>

@@ -1,33 +1,48 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Cardfilms from '../../components/Cardfilms.astro';
-import { getFilmByDate } from '../../../backend/backend.mjs';
+import Layout from "../../layouts/Layout.astro";
+import Camera from "../../assets/icons/icon-camera.svg";
+import Cardfilms from "../../components/Cardfilms.astro";
+import { getFilmByDate } from "../../../backend/backend.mjs";
 const films = await getFilmByDate();
-
 ---
 
 <Layout>
-    <div>
-        <img
-            src="/assets/icon/icon-camera.svg"
-            alt="icon caméra"
-            aria-hidden="true"
-        />
-    </div>
+    <div class="px-7 pt-16">
+        <p class="pb-2.5">
+            Découvrez la programmation riche et diversifiée du festival, mettant
+            à l'honneur des films audacieux, des documentaires inspirants et des
+            œuvres inédites.
+        </p>
 
+        <p class="pb-2.5">
+            Que vous soyez amateur de courts métrages, de longs métrages ou
+            d'animations, plongez dans un univers cinématographique unique, où
+            chaque projection est une nouvelle aventure à vivre.
+        </p>
+
+        <p class="intro">
+            Ne manquez pas les temps forts et les exclusivités qui rythmeront
+            cette édition !
+        </p>
+    </div>
     <section>
         <header>
-            <h2>Liste des Films</h2>
+            <div class="flex justify-center items-center pb-20">
+                <img src={Camera.src} alt="icon caméra" aria-hidden="true" />
+            </div>
+            <h2 class="text-center mb-12">Liste des Films</h2>
         </header>
 
-        <ul>
-            {films.map((film) => (
-                <li>
-                    <Cardfilms {...film} />
-                </li>
-            ))}
+        <ul
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto"
+        >
+            {
+                films.map((film) => (
+                    <li>
+                        <Cardfilms {...film} />
+                    </li>
+                ))
+            }
         </ul>
-
-        
     </section>
 </Layout>

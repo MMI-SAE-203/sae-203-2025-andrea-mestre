@@ -15,7 +15,7 @@
 
 @layer base {
     h1 {
-        @apply font-playfair; 
+        @apply font-playfair ; 
     }
     h3 {
         @apply font-playfair-display; 
@@ -43,5 +43,9 @@
         @apply bg-background pb-44
     }
 
+    .button{ 
+        @apply  text-white px-14 shadow-lg transition-transform hover:scale-105;
+    }
   
 }
+

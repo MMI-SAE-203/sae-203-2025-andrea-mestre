@@ -1,27 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import AfficheTnw from "../assets/img/affiche_theneighborswindow.webp";
-import affichePupille from "../assets/img/affiche_pupille.webp";
-import AfficheParasite from "../assets/img/affiche_parasite.webp";
-import AfficheLesGardiennes from "../assets/img/affiche_gardiennes.webp";
+import Cardfilms from "../components/Cardfilms.astro";
+import { getFilmsFeatured } from "../../backend/backend.mjs"; // Assurez-vous que cette fonction existe
 import Cardformule from "../components/Cardformule.astro";
 import { getFormuleByPrice } from "../../backend/backend.mjs";
 import IconIut from "/src/assets/icons/icon-ufc.svg";
 import IconMmi from "/src/assets/icons/icon-MMI_montbéliard.png";
 import IconVosges from "/src/assets/icons/departement.svg";
+
+// Récupérer les films à la une (les 4 premiers)
+const featuredFilms = await getFilmsFeatured(4); // Récupère 4 films mis en avant
 const formules = await getFormuleByPrice();
 ---
 
 <Layout>
-  <div class="px-7 pt-16">
-    <p class="pb-2.5">
+  <!-- Section intro -->
+  <div class="px-7 pt-16 md:max-w-3xl lg:max-w-4xl mx-auto text-center">
+    <p class="pb-2.5 md:text-lg">
       Bienvenue à Cinémagny, le festival incontournable dédié à la célébration
       du 7e art sous toutes ses formes ! Ce rendez-vous unique offre une riche
       sélection de films, allant des longs métrages aux courts, en passant par
       des documentaires et des films d'animation.
     </p>
 
-    <p>
+    <p class="pb-6 md:text-lg">
       Cinémagny se distingue par son engagement à promouvoir les talents
       émergents du cinéma indépendant et à mettre en lumière des artistes
       locaux. Vous y découvrirez des œuvres méconnues, originales et innovantes,
@@ -30,7 +32,7 @@ const formules = await getFormuleByPrice();
 
     <div class="flex justify-center items-center">
       <a
-        class="bg-background mb-6 px-13 shadow-lg"
+        class="bg-background text-black button"
         href="/festival"
         aria-label="En savoir plus sur le festival"
         >En savoir plus sur le festival</a
@@ -38,75 +40,74 @@ const formules = await getFormuleByPrice();
     </div>
   </div>
 
+  <!-- Section Films à la Une -->
   <section>
-    <header>
-      <h2>Les Films à la Une</h2>
+    <header class="text-center mb-8">
+      <h2 class="text-3xl md:text-4xl">Les Films à la Une</h2>
     </header>
 
     <div
       class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 justify-center items-center px-4 md:px-12 md:max-w-6xl md:mx-auto"
     >
-      <img
-        class="w-36 h-56 md:w-56 md:h-80 lg:w-64 lg:h-96 mx-auto transition-transform duration-300 hover:scale-105"
-        src={AfficheTnw.src}
-        alt="affiche du film The Neighbors Window"
-      />
-      <img
-        class="w-36 h-56 md:w-56 md:h-80 lg:w-64 lg:h-96 mx-auto transition-transform duration-300 hover:scale-105"
-        src={affichePupille.src}
-        alt="affiche du film Pupille"
-      />
-      <img
-        class="w-36 h-56 md:w-56 md:h-80 lg:w-64 lg:h-96 mx-auto transition-transform duration-300 hover:scale-105"
-        src={AfficheParasite.src}
-        alt="affiche du film Parasite"
-      />
-      <img
-        class="w-36 h-56 md:w-56 md:h-80 lg:w-64 lg:h-96 mx-auto transition-transform duration-300 hover:scale-105"
-        src={AfficheLesGardiennes.src}
-        alt="affiche du film Les Gardiennes"
-      />
+      {
+        featuredFilms.map((film) => (
+          <div class="flex flex-col items-center">
+            <a
+              href={`/films/${film.id}`}
+              class="w-36 h-56 md:w-56 md:h-80 lg:w-64 lg:h-96 mx-auto overflow-hidden rounded-lg"
+            >
+              <img
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                src={film.affiche}
+                alt={`Affiche du film ${film.titre}`}
+              />
+            </a>
+            <h3 class="text-center mt-2 md:text-lg">{film.titre}</h3>
+          </div>
+        ))
+      }
     </div>
 
     <div class="flex justify-center items-center mt-4 md:mt-8">
       <a
-        class="bg-blue text-white px-14 py-2 shadow-lg transition-transform hover:scale-105"
-        href="/programme"
+        class="button bg-blue"
+        href="/films"
         aria-label="Voir la programmation complète">La programmation complète</a
       >
     </div>
   </section>
 
   <section>
-    <header>
-      <h2>Formules & Tarifs</h2>
+    <header class="text-center mb-8">
+      <h2 class="text-3xl md:text-4xl ">Formules & Tarifs</h2>
     </header>
 
-    <ul class="flex justify-center items-center flex-col gap-20">
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 px-4 md:px-12 max-w-7xl mx-auto justify-items-center">
       {
         formules.map((formule) => (
-          <li>
+          <li class="w-full max-w-sm">
             <Cardformule {...formule} />
           </li>
         ))
       }
     </ul>
 
-    <div class="flex justify-center items-center pt-6">
+    <div class="flex justify-center items-center pt-10 pb-8">
       <a
-        class="bg-brown mb-6 px-19 shadow-lg"
+        class="bg-brown button"
         href="/billeterie"
         aria-label="L'ensemble de nos tarifs">L'ensemble de nos tarifs</a
       >
     </div>
   </section>
 
-  <section>
-    <header>
-      <h2>Notre Engagement Écoresponsable</h2>
+  <!-- Section Engagement Écoresponsable -->
+  <section >
+    <header class="text-center mb-8">
+      <h2 class="text-3xl md:text-4xl ">Notre Engagement Écoresponsable</h2>
     </header>
 
-    <p class="px-7">
+    <p class="px-7 md:max-w-3xl lg:max-w-4xl mx-auto text-center md:text-lg pb-8">
       L'écoresponsabilité est au cœur de notre festival. Nous nous engageons à
       réduire notre impact environnemental en privilégiant des pratiques
       durables, de l'utilisation de matériaux recyclés à la promotion de
@@ -116,7 +117,7 @@ const formules = await getFormuleByPrice();
 
     <div class="flex justify-center items-center">
       <a
-        class="bg-blue text-white px-8 shadow-lg"
+        class="bg-blue text-white button"
         href="/ecoresponsabilite"
         aria-label="Aller à notre page engagement"
       >
@@ -125,31 +126,39 @@ const formules = await getFormuleByPrice();
     </div>
   </section>
 
-  <section>
-    <header>
-      <h2>Nos Partenaires</h2>
+  <!-- Section Partenaires -->
+  <section >
+    <header class="text-center mb-8">
+      <h2 class="text-3xl md:text-4xl ">Nos Partenaires</h2>
     </header>
 
-    <div class="flex justify-center items-center flex-col">
+    <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 lg:gap-24 py-8">
       <a
         href="https://www.iut-nfc.univ-fcomte.fr/"
         target="_blank"
         aria-label="Visite le site partenaire UFC Nord Franche comté"
+        class="transform transition-all duration-300 hover:scale-110"
       >
-        <img src={IconIut.src} alt="icon-itu" />
+        <img src={IconIut.src} alt="icon-itu" class="max-h-24 md:max-h-32 lg:max-h-40" />
       </a>
       <a
         href="https://www.iut-nfc.univ-fcomte.fr/b-u-t-metiers-du-multimedia-et-de-linternet/"
         target="_blank"
         aria-label="Visite le site partenaire MMI Montbéliard"
+        class="transform transition-all duration-300 hover:scale-110"
       >
-        <img src={IconMmi.src} alt="icon-mmi" />
+        <img src={IconMmi.src} alt="icon-mmi" class="max-h-24 md:max-h-32 lg:max-h-40" />
       </a>
-      <a href="https://www.vosges.fr/" target="_blank">
+      <a 
+        href="https://www.vosges.fr/" 
+        target="_blank"
+        aria-label="Visite le site partenaire des Vosges"
+        class="transform transition-all duration-300 hover:scale-110"
+      >
         <img
           src={IconVosges.src}
           alt="icon-vosges"
-          aria-label="Visite le site partenaire des Vosges "
+          class="max-h-24 md:max-h-32 lg:max-h-40"
         />
       </a>
     </div>

@@ -53,7 +53,7 @@ export async function getFilmById(id) {
   const film = await pb.collection("film").getOne(id, {
     expand: "participe",
   });
-  film.img = pb.files.getURL(film, film.img);
+  film.affiche = pb.files.getURL(film, film.affiche);
 
   if (film.expand?.participe) {
     film.expand.participe.img = pb.files.getURL(
@@ -115,4 +115,10 @@ export async function getFormuleByPrice() {
     console.error(error);
     return [];
   }
+}
+
+
+export async function getFilmsFeatured(limit = 4) {
+  const allFilms = await getFilmByDate();
+  return allFilms.slice(0, limit); 
 }

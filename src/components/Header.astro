@@ -8,7 +8,6 @@ import IconFacebook from "/src/assets/icons/icon-facebook.svg";
 import IconTwitter from "/src/assets/icons/icon-twitter.svg";
 ---
 
-
 <div class="flex justify-between items-center p-7 md:px-12">
     <div class="md:hidden">
         <img
@@ -18,41 +17,75 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
             aria-expanded="false"
         />
     </div>
-    
+
     <div class="hidden md:flex md:flex-1 md:items-center">
         <nav class="desktop-nav">
             <ul class="flex space-x-6">
-                <li><a href="/festival" class="text-white font-playfair-display text-3xl uppercase  transition duration-300 hover:text-black transform hover:scale-110">Festival</a></li>
-                <li><a href="/programme" class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110">Programme</a></li>
-                <li><a href="/activities" class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110">Activités</a></li>
+                <li>
+                    <a
+                        href="/festival"
+                        class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110"
+                        >Festival</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="/programme"
+                        class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110"
+                        >Programme</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="/activities"
+                        class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110"
+                        >Activités</a
+                    >
+                </li>
             </ul>
         </nav>
     </div>
-    
 
     <div>
-        <a href="/" aria-label="Retourner à l'accueil"  >
+        <a href="/" aria-label="Retourner à l'accueil">
             <img src={IconLogo.src} alt="logoFestival" />
         </a>
     </div>
-    
+
     <div class="md:flex-1 flex justify-end items-center">
-  
         <div class="hidden md:flex md:mr-6">
             <ul class="flex space-x-6">
-                <li><a href="/billeterie" class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110">Billetterie</a></li>
-                <li><a href="/ecoresponsabilite" class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110">Écoresponsabilité</a></li>
-                <li><a href="/contact" class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110">Contact</a></li>
+                <li>
+                    <a
+                        href="/billeterie"
+                        class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110"
+                        >Billetterie</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="/ecoresponsabilite"
+                        class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110"
+                        >Écoresponsabilité</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="/contact"
+                        class="text-white font-playfair-display text-3xl uppercase transition duration-300 hover:text-black transform hover:scale-110"
+                        >Contact</a
+                    >
+                </li>
             </ul>
         </div>
-        
-
-        <a aria-label="aller au panier" class="transform hover:scale-110 transition duration-300 p-0">
+        <a
+            aria-label="aller au panier"
+            class="transform hover:scale-110 transition duration-300 p-0 m-0"
+        >
             <img class="w-11 md:w-10" src={IconCaddie.src} alt="panier" />
         </a>
     </div>
 </div>
-
 
 <nav
     class="menu fixed top-0 left-0 w-full h-full bg-blue transform transition-transform duration-400 ease-in-out -translate-x-full md:hidden"
@@ -61,59 +94,77 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
 >
     <div class="p-15 pt-20">
         <ul class="flex flex-col gap-10 items-start space-y-4">
-            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item">
+            <li
+                class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item"
+            >
                 <a
                     href="/"
-                    class="text-3xl text-white font-playfair-display transition-colors hover:text-black">Accueil</a
+                    class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
+                    >Accueil</a
                 >
             </li>
 
-            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-75">
+            <li
+                class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-75"
+            >
                 <a
                     href="/festival"
                     class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
                     >Festival</a
                 >
             </li>
-            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-150">
+            <li
+                class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-150"
+            >
                 <a
                     href="/films"
                     class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
                     >Programme</a
                 >
             </li>
-            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-225">
+            <li
+                class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-225"
+            >
                 <a
                     href="/activites"
                     class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
                     >Activités</a
                 >
             </li>
-            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-300">
+            <li
+                class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-300"
+            >
                 <a
                     href="/billeterie"
                     class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
                     >Billetterie</a
                 >
             </li>
-            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-375">
+            <li
+                class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-375"
+            >
                 <a
                     href="/ecoresponsabilite"
                     class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
                     >Écoresponsabilité</a
                 >
             </li>
-            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-450">
+            <li
+                class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-450"
+            >
                 <a
                     href="/infos-pratiques"
                     class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
                     >Infos pratiques</a
                 >
             </li>
-            <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-525">
+            <li
+                class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-525"
+            >
                 <a
                     href="/contact"
-                    class="text-3xl text-white font-playfair-display transition-colors hover:text-black">Contact</a
+                    class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
+                    >Contact</a
                 >
             </li>
         </ul>
@@ -172,10 +223,12 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
 </nav>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener("DOMContentLoaded", () => {
         // Utiliser des assertions de type pour éviter les erreurs
         const toggle = document.querySelector(".menu-btn") as HTMLElement;
-        const closeBtn = document.querySelector(".menu-close-btn") as HTMLElement;
+        const closeBtn = document.querySelector(
+            ".menu-close-btn",
+        ) as HTMLElement;
         const nav = document.querySelector(".menu") as HTMLElement;
         const page = document.body;
 
@@ -204,7 +257,10 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
             const menuItems = document.querySelectorAll(".menu-item");
             menuItems.forEach((item, index) => {
                 setTimeout(() => {
-                    (item as HTMLElement).classList.remove("translate-x-[-50px]", "opacity-0");
+                    (item as HTMLElement).classList.remove(
+                        "translate-x-[-50px]",
+                        "opacity-0",
+                    );
                 }, index * 75);
             });
         }
@@ -212,13 +268,16 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
         function resetMenuItems() {
             const menuItems = document.querySelectorAll(".menu-item");
             menuItems.forEach((item) => {
-                (item as HTMLElement).classList.add("translate-x-[-50px]", "opacity-0");
+                (item as HTMLElement).classList.add(
+                    "translate-x-[-50px]",
+                    "opacity-0",
+                );
             });
         }
 
         // Ajouter des vérifications supplémentaires avant d'attacher les événements
         toggle.addEventListener("click", openMenu);
-            
+
         if (closeBtn) {
             closeBtn.addEventListener("click", closeMenu);
         }

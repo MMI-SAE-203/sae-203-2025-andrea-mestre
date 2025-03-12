@@ -4,7 +4,7 @@ const { ...formule } = Astro.props;
 
 <div class="border mx-7 rounded-md">
     <div class="flex justify-center items-center flex-col">
-        <div class="p-3.5 w-full  border-b">
+        <div class="p-3.5 w-full border-b">
             <h3 class="text-2xl text-center">{formule.type}</h3>
         </div>
 
@@ -15,7 +15,14 @@ const { ...formule } = Astro.props;
             <p class="text-2xl pb-3">
                 {formule.prix} €
             </p>
-            <a class="text-white bg-black py-4 px-7 rounded-full relative top-2.5" href="/billetterie" aria-label="Acheter la formule">acheter</a>
+            <a 
+                class="text-white bg-black py-4 px-7 rounded-full relative top-2.5 
+                       transition-all duration-300 hover:bg-background hover:text-black hover:border hover:border-black hover:scale-105" 
+                href="/billetterie" 
+                aria-label="Acheter la formule"
+            >
+                acheter
+            </a>
         </div>
     </div>
 </div>
