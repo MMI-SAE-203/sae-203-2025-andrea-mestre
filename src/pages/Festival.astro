@@ -1,10 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import IconMontagne from "../assets/icons/icon-montain.svg";
+import IconPlanet from "../assets/icons/icon-planet.svg";
 ---
 
 <Layout>
     <div class="px-7 pt-16">
-        <p class="pb-2.5">
+        <p class="">
             Bienvenue au Festival Cinémagny, le rendez-vous incontournable du
             cinéma indépendant ! Pendant cinq jours, plongez au cœur du 7ᵉ art
             avec une programmation riche et variée : projections de longs et
@@ -12,7 +14,7 @@ import Layout from "../layouts/Layout.astro";
             exclusives avec des réalisateurs et artistes émergents.
         </p>
 
-        <p class="intro">
+        <p class="pt-2.5">
             Que vous soyez cinéphile passionné ou simplement curieux, vivez une
             expérience unique, au cœur d'un cadre exceptionnel et convivial. Ne
             manquez pas cette célébration du cinéma qui met en lumière des
@@ -21,12 +23,10 @@ import Layout from "../layouts/Layout.astro";
     </div>
 
     <section>
-        <header class="section__header">
-            <h2 class="title section__les-vosges--title">
-                Le Rendez-vous dans les Vosges
-            </h2>
+        <header>
+            <h2>Le Rendez-vous dans les Vosges</h2>
         </header>
-        <p>
+        <p class="px-7 pb-20">
             Découvrez Cinémagny, le festival de cinéma qui célèbre la créativité
             et l’audace du 7ᵉ art. Au programme : longs métrages, courts,
             documentaires et animations, avec un focus sur les talents émergents
@@ -35,48 +35,49 @@ import Layout from "../layouts/Layout.astro";
             Vosges.
         </p>
 
-        <div class="icon__center">
+        <div class="flex justify-center items-center pb-20">
             <img
                 class="icon__montagne"
-                src="/assets/icon/icon-montain.svg"
+                src={IconMontagne.src}
                 alt="icon petites motagnes"
                 aria-hidden="true"
             />
         </div>
-        <p>
+        <p class="px-7 pb-2.5">
             Dès sa création en 2016, Cinémagny s’est donné pour mission de
             valoriser les talents émergents et de mettre en lumière des artistes
             souvent méconnus, qu’ils soient locaux ou issus du cinéma
             indépendant.
         </p>
 
-        <p>
+        <p class="px-7 pb-20">
             L’objectif principal était clair : offrir une tribune aux œuvres
             originales et audacieuses, loin des sentiers battus, et permettre au
             public de découvrir une diversité de regards et d’histoires
         </p>
 
-        <p class="section__les-vosges exerge">
+        <p class="px-7 pb-20 font-playfair-display text-2xl">
             Rejoignez-nous et laissez-vous emporter par la magie du cinéma, là
             où chaque image raconte une histoire.
         </p>
 
-        <div class="icon__center">
+        <div class="flex justify-center items-center pb-20">
             <img
                 class="icon__planet"
-                src="/assets/icon/icon-planet.svg"
+                src={IconPlanet.src}
                 alt="icon planète"
                 aria-hidden="true"
             />
         </div>
-        <p>
+
+        <p class="px-7 pb-2.5">
             Le Festival Cinémagny est bien plus qu’un événement
             cinématographique : il est un acteur engagé pour l’écologie. Au cœur
             des Vosges, ce festival met en avant des films qui sensibilisent aux
             enjeux environnementaux, tout en adoptant des pratiques durables.
         </p>
 
-        <p class="lesvosges__texte">
+        <p class="px-7 ">
             En réduisant son empreinte carbone et en privilégiant des solutions
             écologiques pour ses installations, Cinémagny s'engage à promouvoir
             un cinéma responsable et respectueux de la planète
