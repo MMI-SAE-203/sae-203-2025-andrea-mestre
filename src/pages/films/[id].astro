@@ -1,6 +1,12 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getFilmById } from "../../../backend/backend.mjs";
+const {id} = Astro.params;
+const film = await getFilmById(id);
+
+if (!film) {
+    return Astro.redirect("/films");
+}
 ---
 
 <Layout>

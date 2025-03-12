@@ -50,12 +50,34 @@ export async function getInviteByName() {
 }
 
 export async function getFilmById(id) {
-  const film = await pb.collection("film").getOne(id);
+  const film = await pb.collection("film").getOne(id, {
+    expand: "participe",
+  });
+  film.img = pb.files.getURL(film, film.img);
+
+  if (film.expand?.participe) {
+    film.expand.participe.img = pb.files.getURL(
+      film.expand.participe,
+      film.expand.participe.img
+    );
+  }
+
   return film;
 }
 
 export async function getActiviteById(id) {
-  const activite = await pb.collection("activite").getOne(id);
+  const activite = await pb.collection("activite").getOne(id, {
+    expand: "anime_invite",
+  });
+  activite.img = pb.files.getURL(activite, activite.img);
+
+  if (activite.expand?.anime_invite) {
+    activite.expand.anime_invite.img = pb.files.getURL(
+      activite.expand.anime_invite,
+      activite.expand.anime_invite.img
+    );
+  }
+
   return activite;
 }
 
