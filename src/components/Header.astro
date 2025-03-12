@@ -60,60 +60,60 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
     data-hidden="true"
 >
     <div class="p-15 pt-20">
-        <ul class="flex flex-col gap-15 items-start space-y-4">
+        <ul class="flex flex-col gap-10 items-start space-y-4">
             <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item">
                 <a
                     href="/"
-                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black">Accueil</a
+                    class="text-3xl text-white font-playfair-display transition-colors hover:text-black">Accueil</a
                 >
             </li>
 
             <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-75">
                 <a
                     href="/festival"
-                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black"
+                    class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
                     >Festival</a
                 >
             </li>
             <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-150">
                 <a
                     href="/programme"
-                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black"
+                    class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
                     >Programme</a
                 >
             </li>
             <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-225">
                 <a
                     href="/activites"
-                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black"
+                    class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
                     >Activités</a
                 >
             </li>
             <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-300">
                 <a
                     href="/billeterie"
-                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black"
+                    class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
                     >Billetterie</a
                 >
             </li>
             <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-375">
                 <a
                     href="/ecoresponsabilite"
-                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black"
+                    class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
                     >Écoresponsabilité</a
                 >
             </li>
             <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-450">
                 <a
                     href="/infos-pratiques"
-                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black"
+                    class="text-3xl text-white font-playfair-display transition-colors hover:text-black"
                     >Infos pratiques</a
                 >
             </li>
             <li class="transform translate-x-[-50px] opacity-0 transition-all duration-300 menu-item delay-525">
                 <a
                     href="/contact"
-                    class="text-4xl text-white font-playfair-display transition-colors hover:text-black">Contact</a
+                    class="text-3xl text-white font-playfair-display transition-colors hover:text-black">Contact</a
                 >
             </li>
         </ul>
@@ -126,7 +126,7 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
         </button>
     </div>
 
-    <div class="flex justify-center items-center py-15">
+    <div class="absolute bottom-10 left-22">
         <ul class="flex flex-row gap-15" aria-label="Nos Réseaux sociaux">
             <li>
                 <a
@@ -135,7 +135,7 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
                     class="block transform hover:scale-110 transition duration-300"
                 >
                     <img
-                        class="w-12"
+                        class="w-10"
                         src={IconFacebook.src}
                         alt="icon-facebook"
                     />
@@ -148,7 +148,7 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
                     class="block transform hover:scale-110 transition duration-300"
                 >
                     <img
-                        class="w-12"
+                        class="w-10"
                         src={IconInsta.src}
                         alt="icon instagram"
                     />
@@ -161,7 +161,7 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
                     class="block transform hover:scale-110 transition duration-300"
                 >
                     <img
-                        class="w-15"
+                        class="w-12"
                         src={IconTwitter.src}
                         alt="icon twitter"
                     />
@@ -173,10 +173,14 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const toggle = document.querySelector(".menu-btn");
-        const closeBtn = document.querySelector(".menu-close-btn");
-        const nav = document.querySelector(".menu");
+        // Utiliser des assertions de type pour éviter les erreurs
+        const toggle = document.querySelector(".menu-btn") as HTMLElement;
+        const closeBtn = document.querySelector(".menu-close-btn") as HTMLElement;
+        const nav = document.querySelector(".menu") as HTMLElement;
         const page = document.body;
+
+        // Vérifier si les éléments existent avant d'utiliser leurs propriétés
+        if (!toggle || !nav) return;
 
         function openMenu() {
             toggle.setAttribute("aria-expanded", "true");
@@ -200,7 +204,7 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
             const menuItems = document.querySelectorAll(".menu-item");
             menuItems.forEach((item, index) => {
                 setTimeout(() => {
-                    item.classList.remove("translate-x-[-50px]", "opacity-0");
+                    (item as HTMLElement).classList.remove("translate-x-[-50px]", "opacity-0");
                 }, index * 75);
             });
         }
@@ -208,16 +212,15 @@ import IconTwitter from "/src/assets/icons/icon-twitter.svg";
         function resetMenuItems() {
             const menuItems = document.querySelectorAll(".menu-item");
             menuItems.forEach((item) => {
-                item.classList.add("translate-x-[-50px]", "opacity-0");
+                (item as HTMLElement).classList.add("translate-x-[-50px]", "opacity-0");
             });
         }
 
-        if (toggle && nav) {
-            toggle.addEventListener("click", openMenu);
-
-            if (closeBtn) {
-                closeBtn.addEventListener("click", closeMenu);
-            }
+        // Ajouter des vérifications supplémentaires avant d'attacher les événements
+        toggle.addEventListener("click", openMenu);
+            
+        if (closeBtn) {
+            closeBtn.addEventListener("click", closeMenu);
         }
     });
 </script>

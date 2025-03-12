@@ -25,6 +25,11 @@
         @apply font-playfair-display text-black text-5xl text-center pb-20 ; 
     }
 
+    p{ 
+        @apply text-xl;
+
+    }
+
     body{
         @apply font-monserrat  text-black bg-blue; 
        
