@@ -22,7 +22,7 @@
     }
 
     h2 {
-        @apply font-playfair text-black text-4xl text-center pb-20 ; 
+        @apply font-playfair-display text-black text-5xl text-center pb-20 ; 
     }
 
     body{
