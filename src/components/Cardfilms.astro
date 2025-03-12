@@ -1,0 +1,9 @@
+---
+const { ...film } = Astro.props;
+---
+
+<div class="flex justify-center items-center flex-col">
+    <img src={film.affiche} alt="affiche film" />
+    <h3>{film.titre}</h3>
+    <p>{film.realisateur}</p>
+</div>

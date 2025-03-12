@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Cardfilms from '../../components/Cardfilms.astro';
+import { getFilmByDate } from '../../../backend/backend.mjs';
+const films = await getFilmByDate();
+
+---
+
+<Layout>
+    <div>
+        <img
+            src="/assets/icon/icon-camera.svg"
+            alt="icon caméra"
+            aria-hidden="true"
+        />
+    </div>
+
+    <section>
+        <header>
+            <h2>Liste des Films</h2>
+        </header>
+
+        <ul>
+            {films.map((film) => (
+                <li>
+                    <Cardfilms {...film} />
+                </li>
+            ))}
+        </ul>
+
+        
+    </section>
+</Layout>
