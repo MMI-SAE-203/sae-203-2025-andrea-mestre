@@ -31,6 +31,6 @@
     }
 
     a {
-        @apply uppercase text-xs text-center ; 
+        @apply uppercase text-xs text-center mt-11; 
     }
 }
