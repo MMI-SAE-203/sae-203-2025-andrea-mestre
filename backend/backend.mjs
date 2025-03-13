@@ -103,6 +103,26 @@ export async function getActiviteByName(inviteName) {
   return invites;
 }
 
+export async function allActiviteByInviteName(nom) {
+  const activite = await pb.collection("activite").getFullList({
+     filter: `anime_invite.nom = '${nom}'`, 
+    expand: "anime_invite" });
+  return activite;
+}
+
+
+export async function addFilm(newFilm) {
+  const film = await pb.collection('film').create(newFilm);
+  return film;
+}
+
+export async function modifFilm(data, id) {
+  const modif = await pb.collection('film').update(data, id);
+  return modif;
+}
+
+
+//
 export async function getFormuleByPrice() {
   try {
     let formules = await pb.collection("formule").getFullList({
@@ -114,7 +134,6 @@ export async function getFormuleByPrice() {
     return [];
   }
 }
-
 
 export async function getFilmsFeatured(limit = 4) {
   const allFilms = await getFilmByDate();

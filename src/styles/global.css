@@ -8,44 +8,44 @@
     --color-background: oklch(98.89% 0.0105 106.59);
     --color-green: oklch(87.31% 0.0708 143.7);
     --color-blue: oklch(74.51% 0.0725 223.05);
-    --color-brown : oklch(77.18% 0.0626 72.36);
+    --color-brown: oklch(77.18% 0.0626 72.36);
     --color-black: oklch(0% 0 0);
     --color-white: oklch(100% 0 0);
 } 
 
 @layer base {
     h1 {
-        @apply font-playfair ; 
+        @apply font-playfair; 
     }
+    
     h3 {
         @apply font-playfair-display; 
     }
 
     h2 {
-        @apply font-playfair-display text-black text-4xl text-center pb-20 ; 
+        @apply font-playfair-display text-black text-4xl text-center pb-20; 
     }
 
     p{ 
         @apply text-lg;
-
     }
 
-    body{
-        @apply font-monserrat  text-black bg-blue; 
-       
+    body {
+        @apply font-monserrat text-black;
+        background-image: linear-gradient(to bottom, var(--color-blue), var(--color-green));
+        background-attachment: fixed;
     }
 
     a {
-        @apply uppercase text-sm text-center mt-11 py-4  ; 
+        @apply uppercase text-sm text-center mt-11 py-4; 
     }
 
-    section{
-        @apply bg-background pb-44
+    section {
+        @apply bg-background pb-44;
     }
 
-    .button{ 
-        @apply  text-white px-14 shadow-lg transition-transform hover:scale-105;
+    .button { 
+        @apply text-white px-14 shadow-lg transition-transform hover:scale-105;
     }
-  
 }
 

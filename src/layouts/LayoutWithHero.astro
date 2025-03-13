@@ -1,0 +1,44 @@
+---
+import Layout from "./Layout.astro";
+import { Picture } from "astro:assets";
+const {
+    title,
+    subTitle,
+    src,
+    alt,
+    classContent = "",
+} = Astro.props;
+---
+
+<Layout title={title}>
+    <div class="pt-30">
+        <div>
+            <h1
+                class="text-white font-playfair text-7xl drop-shadow-lg flex justify-center items-center"
+            >
+                {title}
+            </h1>
+            {
+                subTitle && (
+                    <h2 class="text-white font-playfair-display text-2xl drop-shadow-lg flex justify-center items-center">
+                        {subTitle}
+                    </h2>
+                )
+            }
+        </div>
+
+        <div>
+            <slot name="chapo" />
+        </div>
+        <Picture
+            formats={["avif", "webp"]}
+            src={src}
+            alt={alt}
+            widths={[540, 1024, src.width]}
+            sizes={`(max-width: 540px) 540px, (max-width: 1024px) 1024px, ${src.width}px`}
+        />
+    </div>
+    <div class={classContent}>
+        <slot name="content" />
+    </div>
+</Layout>

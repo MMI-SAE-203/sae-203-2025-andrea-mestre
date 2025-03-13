@@ -104,7 +104,9 @@ import Cardequipe from "../components/Cardequipe.astro";
             <h2 class="text-3xl md:text-4xl">Notre Équipe</h2>
         </header>
 
-        <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 md:px-8 max-w-7xl mx-auto">
+        <ul
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 md:px-8 max-w-7xl mx-auto"
+        >
             {
                 equipe.map((membre) => (
                     <li class="flex justify-center">
@@ -115,3 +117,4 @@ import Cardequipe from "../components/Cardequipe.astro";
         </ul>
     </section>
 </Layout>
+

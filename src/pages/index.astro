@@ -1,166 +1,180 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Cardfilms from "../components/Cardfilms.astro";
-import { getFilmsFeatured } from "../../backend/backend.mjs"; // Assurez-vous que cette fonction existe
+import { getFilmsFeatured } from "../../backend/backend.mjs";
 import Cardformule from "../components/Cardformule.astro";
 import { getFormuleByPrice } from "../../backend/backend.mjs";
 import IconIut from "/src/assets/icons/icon-ufc.svg";
 import IconMmi from "/src/assets/icons/icon-MMI_montbéliard.png";
 import IconVosges from "/src/assets/icons/departement.svg";
-
-// Récupérer les films à la une (les 4 premiers)
-const featuredFilms = await getFilmsFeatured(4); // Récupère 4 films mis en avant
+const featuredFilms = await getFilmsFeatured(4);
 const formules = await getFormuleByPrice();
+import ImgHero from "../assets/icons/img-montagne.svg";
+
+
 ---
 
 <Layout>
-  <!-- Section intro -->
-  <div class="px-7 pt-16 md:max-w-3xl lg:max-w-4xl mx-auto text-center">
-    <p class="pb-2.5 md:text-lg">
-      Bienvenue à Cinémagny, le festival incontournable dédié à la célébration
-      du 7e art sous toutes ses formes ! Ce rendez-vous unique offre une riche
-      sélection de films, allant des longs métrages aux courts, en passant par
-      des documentaires et des films d'animation.
-    </p>
+  
+    <div class="px-7 pt-16 md:max-w-3xl lg:max-w-4xl mx-auto text-center">
+      <p class="pb-2.5 md:text-lg">
+        Bienvenue à Cinémagny, le festival incontournable dédié à la célébration
+        du 7e art sous toutes ses formes ! Ce rendez-vous unique offre une riche
+        sélection de films, allant des longs métrages aux courts, en passant par
+        des documentaires et des films d'animation.
+      </p>
 
-    <p class="pb-6 md:text-lg">
-      Cinémagny se distingue par son engagement à promouvoir les talents
-      émergents du cinéma indépendant et à mettre en lumière des artistes
-      locaux. Vous y découvrirez des œuvres méconnues, originales et innovantes,
-      dans un cadre authentique au cœur des Vosges.
-    </p>
+      <p class="pb-6 md:text-lg">
+        Cinémagny se distingue par son engagement à promouvoir les talents
+        émergents du cinéma indépendant et à mettre en lumière des artistes
+        locaux. Vous y découvrirez des œuvres méconnues, originales et
+        innovantes, dans un cadre authentique au cœur des Vosges.
+      </p>
 
-    <div class="flex justify-center items-center">
-      <a
-        class="bg-background text-black button"
-        href="/festival"
-        aria-label="En savoir plus sur le festival"
-        >En savoir plus sur le festival</a
-      >
-    </div>
-  </div>
-
-  <!-- Section Films à la Une -->
-  <section>
-    <header class="text-center mb-8">
-      <h2 class="text-3xl md:text-4xl">Les Films à la Une</h2>
-    </header>
-
-    <div
-      class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 justify-center items-center px-4 md:px-12 md:max-w-6xl md:mx-auto"
-    >
-      {
-        featuredFilms.map((film) => (
-          <div class="flex flex-col items-center">
-            <a
-              href={`/films/${film.id}`}
-              class="w-36 h-56 md:w-56 md:h-80 lg:w-64 lg:h-96 mx-auto overflow-hidden rounded-lg"
-            >
-              <img
-                class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                src={film.affiche}
-                alt={`Affiche du film ${film.titre}`}
-              />
-            </a>
-            <h3 class="text-center mt-2 md:text-lg">{film.titre}</h3>
-          </div>
-        ))
-      }
+      <div class="flex justify-center items-center">
+        <a
+          class="bg-background text-black button"
+          href="/festival"
+          aria-label="En savoir plus sur le festival"
+          >En savoir plus sur le festival</a
+        >
+      </div>
     </div>
 
-    <div class="flex justify-center items-center mt-4 md:mt-8">
-      <a
-        class="button bg-blue"
-        href="/films"
-        aria-label="Voir la programmation complète">La programmation complète</a
+    <section>
+      <header class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl">Les Films à la Une</h2>
+      </header>
+
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 justify-center items-center px-4 md:px-12 md:max-w-6xl md:mx-auto"
       >
-    </div>
-  </section>
+        {
+          featuredFilms.map((film) => (
+            <div class="flex flex-col items-center">
+              <a
+                href={`/films/${film.id}`}
+                class="w-36 h-56 md:w-56 md:h-80 lg:w-64 lg:h-96 mx-auto overflow-hidden rounded-lg"
+              >
+                <img
+                  class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  src={film.affiche}
+                  alt={`Affiche du film ${film.titre}`}
+                />
+              </a>
+              <h3 class="text-center mt-2 md:text-lg">{film.titre}</h3>
+            </div>
+          ))
+        }
+      </div>
 
-  <section>
-    <header class="text-center mb-8">
-      <h2 class="text-3xl md:text-4xl ">Formules & Tarifs</h2>
-    </header>
+      <div class="flex justify-center items-center mt-4 md:mt-8">
+        <a
+          class="button bg-blue"
+          href="/films"
+          aria-label="Voir la programmation complète"
+          >La programmation complète</a
+        >
+      </div>
+    </section>
 
-    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 px-4 md:px-12 max-w-7xl mx-auto justify-items-center">
-      {
-        formules.map((formule) => (
-          <li class="w-full max-w-sm">
-            <Cardformule {...formule} />
-          </li>
-        ))
-      }
-    </ul>
+    <section>
+      <header class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl">Formules & Tarifs</h2>
+      </header>
 
-    <div class="flex justify-center items-center pt-10 pb-8">
-      <a
-        class="bg-brown button"
-        href="/billeterie"
-        aria-label="L'ensemble de nos tarifs">L'ensemble de nos tarifs</a
+      <ul
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 px-4 md:px-12 max-w-7xl mx-auto justify-items-center"
       >
-    </div>
-  </section>
+        {
+          formules.map((formule) => (
+            <li class="w-full max-w-sm">
+              <Cardformule {...formule} />
+            </li>
+          ))
+        }
+      </ul>
 
-  <!-- Section Engagement Écoresponsable -->
-  <section >
-    <header class="text-center mb-8">
-      <h2 class="text-3xl md:text-4xl ">Notre Engagement Écoresponsable</h2>
-    </header>
+      <div class="flex justify-center items-center pt-10 pb-8">
+        <a
+          class="bg-brown button"
+          href="/billeterie"
+          aria-label="L'ensemble de nos tarifs">L'ensemble de nos tarifs</a
+        >
+      </div>
+    </section>
 
-    <p class="px-7 md:max-w-3xl lg:max-w-4xl mx-auto text-center md:text-lg pb-8">
-      L'écoresponsabilité est au cœur de notre festival. Nous nous engageons à
-      réduire notre impact environnemental en privilégiant des pratiques
-      durables, de l'utilisation de matériaux recyclés à la promotion de
-      transports verts. Ensemble, faisons du cinéma un vecteur de changement
-      pour un avenir plus respectueux de la planète.
-    </p>
+    <section>
+      <header class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl">Notre Engagement Écoresponsable</h2>
+      </header>
 
-    <div class="flex justify-center items-center">
-      <a
-        class="bg-blue text-white button"
-        href="/ecoresponsabilite"
-        aria-label="Aller à notre page engagement"
+      <p
+        class="px-7 md:max-w-3xl lg:max-w-4xl mx-auto text-center md:text-lg pb-8"
       >
-        Nos engagements écoresponsables
-      </a>
-    </div>
-  </section>
+        L'écoresponsabilité est au cœur de notre festival. Nous nous engageons à
+        réduire notre impact environnemental en privilégiant des pratiques
+        durables, de l'utilisation de matériaux recyclés à la promotion de
+        transports verts. Ensemble, faisons du cinéma un vecteur de changement
+        pour un avenir plus respectueux de la planète.
+      </p>
 
-  <!-- Section Partenaires -->
-  <section >
-    <header class="text-center mb-8">
-      <h2 class="text-3xl md:text-4xl ">Nos Partenaires</h2>
-    </header>
+      <div class="flex justify-center items-center">
+        <a
+          class="bg-blue text-white button"
+          href="/ecoresponsabilite"
+          aria-label="Aller à notre page engagement"
+        >
+          Nos engagements écoresponsables
+        </a>
+      </div>
+    </section>
 
-    <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 lg:gap-24 py-8">
-      <a
-        href="https://www.iut-nfc.univ-fcomte.fr/"
-        target="_blank"
-        aria-label="Visite le site partenaire UFC Nord Franche comté"
-        class="transform transition-all duration-300 hover:scale-110"
+    <section>
+      <header class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl">Nos Partenaires</h2>
+      </header>
+
+      <div
+        class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 lg:gap-24 py-8"
       >
-        <img src={IconIut.src} alt="icon-itu" class="max-h-24 md:max-h-32 lg:max-h-40" />
-      </a>
-      <a
-        href="https://www.iut-nfc.univ-fcomte.fr/b-u-t-metiers-du-multimedia-et-de-linternet/"
-        target="_blank"
-        aria-label="Visite le site partenaire MMI Montbéliard"
-        class="transform transition-all duration-300 hover:scale-110"
-      >
-        <img src={IconMmi.src} alt="icon-mmi" class="max-h-24 md:max-h-32 lg:max-h-40" />
-      </a>
-      <a 
-        href="https://www.vosges.fr/" 
-        target="_blank"
-        aria-label="Visite le site partenaire des Vosges"
-        class="transform transition-all duration-300 hover:scale-110"
-      >
-        <img
-          src={IconVosges.src}
-          alt="icon-vosges"
-          class="max-h-24 md:max-h-32 lg:max-h-40"
-        />
-      </a>
-    </div>
-  </section>
-</Layout>
+        <a
+          href="https://www.iut-nfc.univ-fcomte.fr/"
+          target="_blank"
+          aria-label="Visite le site partenaire UFC Nord Franche comté"
+          class="transform transition-all duration-300 hover:scale-110"
+        >
+          <img
+            src={IconIut.src}
+            alt="icon-itu"
+            class="max-h-24 md:max-h-32 lg:max-h-40"
+          />
+        </a>
+        <a
+          href="https://www.iut-nfc.univ-fcomte.fr/b-u-t-metiers-du-multimedia-et-de-linternet/"
+          target="_blank"
+          aria-label="Visite le site partenaire MMI Montbéliard"
+          class="transform transition-all duration-300 hover:scale-110"
+        >
+          <img
+            src={IconMmi.src}
+            alt="icon-mmi"
+            class="max-h-24 md:max-h-32 lg:max-h-40"
+          />
+        </a>
+        <a
+          href="https://www.vosges.fr/"
+          target="_blank"
+          aria-label="Visite le site partenaire des Vosges"
+          class="transform transition-all duration-300 hover:scale-110"
+        >
+          <img
+            src={IconVosges.src}
+            alt="icon-vosges"
+            class="max-h-24 md:max-h-32 lg:max-h-40"
+          />
+        </a>
+      </div>
+    </section>
+  
+</Layout
