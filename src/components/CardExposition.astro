@@ -1,0 +1,77 @@
+---
+const { ...activite } = Astro.props;
+import { formatDate } from "../../backend/backend.mjs";
+
+const date = activite.date_activite ? formatDate(activite.date_activite) : null;
+---
+
+<div
+    class="group h-full flex flex-col overflow-hidden bg-white rounded-sm shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1"
+>
+    {
+        activite.image ? (
+            <div class="relative w-full h-56 overflow-hidden">
+                <img
+                    src={activite.image}
+                    alt={`Photo de l'activité ${activite.titre_activite}`}
+                    class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                />
+            </div>
+        ) : (
+            <div class="w-full h-56 md:h-64 lg:h-72 bg-gray-200 flex items-center justify-center">
+                <span class="text-gray-400">Pas de photo</span>
+            </div>
+        )
+    }
+
+    <div class="flex flex-col grow p-4 md:p-5 lg:p-6">
+        <h3
+            class="text-xl md:text-2xl lg:text-3xl text-gray-900 mb-1 line-clamp-2"
+        >
+            {activite.titre_activite}
+        </h3>
+
+        {
+            activite.type && (
+                <p class="text-blue font-medium mb-3 text-sm md:text-base">
+                    {activite.type}
+                </p>
+            )
+        }
+
+        {
+            activite.description && (
+                <div class="text-gray-600 mb-3 prose-sm md:prose-base line-clamp-3 md:line-clamp-4">
+                    <p
+                        set:html={
+                            activite.description.substring(0, 120) +
+                            (activite.description > 120 ? "..." : "")
+                        }
+                    />
+                </div>
+            )
+        }
+
+        {
+            date && (
+                <div class="mt-2 pt-3 border-t border-gray-100">
+                    <p class="text-sm md:text-base text-gray-600 flex items-center">
+                        <span class="font-semibold mr-1">
+                            Activité prévue le :
+                        </span>{" "}
+                        <span>{date}</span>
+                    </p>
+                </div>
+            )
+        }
+
+        <div class="mt-auto pt-4 md:pt-5">
+            <a
+                href={`/activites/${activite.id}`}
+                class="inline-flex items-center justify-center w-full button bg-brown py-2 md:py-3 text-sm md:text-base"
+            >
+                En savoir plus
+            </a>
+        </div>
+    </div>
+</div>

@@ -20,6 +20,7 @@ export async function getFilmByDate() {
 export async function getActiviteByDate() {
   try {
     let activite = await pb.collection("activite").getFullList({
+      
       sort: "date_activite",
     });
     activite = activite.map((activite) => {
@@ -179,4 +180,21 @@ export async function formatDate(dateString) {
   const hours = date.getUTCHours();
 
   return `Le ${ day } ${ month } à ${ hours } h`;
+}
+
+export async function getActiviteType() {
+  try {
+    let activite = await pb.collection("activite").getFullList({
+      filter: `type = "Exposition"`,
+      sort: "date_activite",
+    });
+    activite = activite.map((activite) => {
+      activite.image = pb.files.getURL(activite, activite.image);
+      return activite;
+    });
+    return activite;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 }

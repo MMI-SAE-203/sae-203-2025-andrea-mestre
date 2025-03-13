@@ -2,55 +2,63 @@
 const { ...invite } = Astro.props;
 import { formatDate } from "../../backend/backend.mjs";
 
-const date = invite.expand?.anime_activite?.date_activite 
+const date = invite.expand?.anime_activite?.date_activite
   ? formatDate(invite.expand.anime_activite.date_activite)
   : null;
 
 const activiteTitle = invite.expand?.anime_activite?.titre || null;
 ---
 
-<div class="group h-full flex flex-col overflow-hidden bg-white rounded-sm shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1">
-  {invite.photo ? (
-    <div class="relative w-full h-56 overflow-hidden">
-      <img 
-        src={invite.photo} 
-        alt={`Photo de ${invite.prenom} ${invite.nom}`} 
-        class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-      />
-    </div>
-  ) : (
-    <div class="w-full h-56 bg-gray-200 flex items-center justify-center">
-      <span class="text-gray-400">Pas de photo</span>
-    </div>
-  )}
-  
-  <div class="flex flex-col grow p-5">
-    <h3 class="text-xl md:text-3xl text-gray-900 mb-1">{invite.prenom} {invite.nom}</h3>
-    
-    {invite.metiers && (
-      <p class="text-blue font-medium mb-3">{invite.metiers}</p>
-    )}
-    
-    {date && (
-      <div class="mt-2 pt-3 border-t border-gray-100">
-        <p class="text-sm text-gray-600">
-          <span class="font-semibold">Activité prévue le : </span> {date}
-        </p>
-        
-        {activiteTitle && (
-          <p class="text-sm text-gray-600 mt-1">
-            <span class="font-semibold">Événement:</span> {activiteTitle}
-          </p>
-        )}
+<div
+  class="group h-full flex flex-col overflow-hidden bg-white rounded-sm shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1"
+>
+  {
+    invite.photo ? (
+      <div class="relative w-full h-56 overflow-hidden">
+        <img
+          src={invite.photo}
+          alt={`Photo de ${invite.prenom} ${invite.nom}`}
+          class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+        />
       </div>
-    )}
-    
-    <div class="mt-4">
-      <a 
-        href={`/invités/${invite.id}`} 
-        class="inline-flex items-center justify-center w-full py-2 px-4 bg-blue text-white font-medium rounded-sm transition-colors hover:bg-opacity-90"
-      >
-        En savoir plus
+    ) : (
+      <div class="w-full h-56 bg-gray-200 flex items-center justify-center">
+        <span class="text-gray-400">Pas de photo</span>
+      </div>
+    )
+  }
+
+  <div class="flex flex-col grow p-5">
+    <h3 class="text-xl md:text-3xl text-gray-900 mb-1">
+      {invite.prenom}
+      {invite.nom}
+    </h3>
+
+    {
+      invite.metiers && (
+        <p class="text-blue font-medium mb-3">{invite.metiers}</p>
+      )
+    }
+
+    {
+      date && (
+        <div class="mt-2 pt-3 border-t border-gray-100">
+          <p class="text-center pt-5 text-xl pb-4 mx-4">
+            {invite.expand.anime_activite.titre_activite}
+          </p>
+          <p class="text-sm text-gray-600">
+            <span class="decoration-gray-600">Activité prévue le : </span>{" "}
+            {date}
+          </p>
+        </div>
+      )
+    }
+
+    <div>
+      <a
+        href={`/invités/${invite.id}`}
+        class="inline-flex items-center justify-center w-full button bg-brown"
+        >En savoir plus
       </a>
     </div>
   </div>
