@@ -2,14 +2,14 @@
 const { ...formule } = Astro.props;
 ---
 
-<div class="border mx-7 rounded-md">
+<div class="border mt-15 rounded-md">
     <div class="flex justify-center items-center flex-col">
         <div class="p-3.5 w-full border-b">
-            <h3 class="text-2xl text-center">{formule.type}</h3>
+            <h3 class="text-xl text-center">{formule.type}</h3>
         </div>
 
         <div class="text-center">
-            <p class="px-7 py-4">
+            <p class="px-4 py-4">
                 {formule.description}
             </p>
             <p class="text-2xl pb-3">

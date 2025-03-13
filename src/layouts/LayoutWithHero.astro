@@ -30,17 +30,7 @@ const {
         <div>
             <slot name="chapo" />
         </div>
-        <Picture 
-            pictureAttributes={{
-                class: "w-full h-auto "
-            }}
-            formats={["avif", "webp"]}
-            src={src}
-            alt={alt}
-            widths={[540, 1024, src.width]}
-            sizes={`(max-width: 540px) 540px, (max-width: 1024px) 1024px, ${src.width}px`}
-        />
-    </div>
+        
     <div class={classContent}>
         <slot name="content" />
     </div>

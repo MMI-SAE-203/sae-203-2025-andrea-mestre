@@ -14,25 +14,19 @@ import ImgHero from "../assets/icons/img-montagne.svg";
 const title = "Cinémagny";
 const subTitle = "12 au 16 novembre 2025";
 const alt = "Montagne";
-
 ---
 
-<LayoutWithHero
-  title={title}
-  subTitle={subTitle}
-  src={ImgHero}
-  alt={alt}
-  >
-<Fragment slot="content">
-    <div class="px-7 pt-16 md:max-w-3xl lg:max-w-4xl mx-auto ">
-      <p class="pb-2.5 md:text-lg">
+<LayoutWithHero title={title} subTitle={subTitle} src={ImgHero} alt={alt}>
+  <Fragment slot="content">
+    <div class="px-7 pt-16 md:max-w-3xl lg:max-w-4xl mx-auto">
+      <p class="pb-2.5 md:text-lg lg:text-center">
         Bienvenue à Cinémagny, le festival incontournable dédié à la célébration
         du 7e art sous toutes ses formes ! Ce rendez-vous unique offre une riche
         sélection de films, allant des longs métrages aux courts, en passant par
         des documentaires et des films d'animation.
       </p>
 
-      <p class="pb-6 md:text-lg">
+      <p class="pb-6 md:text-lg lg:text-center">
         Cinémagny se distingue par son engagement à promouvoir les talents
         émergents du cinéma indépendant et à mettre en lumière des artistes
         locaux. Vous y découvrirez des œuvres méconnues, originales et
@@ -41,7 +35,7 @@ const alt = "Montagne";
 
       <div class="flex justify-center items-center">
         <a
-          class="bg-background text-black button"
+          class="bg-background text-black button mb-10"
           href="/festival"
           aria-label="En savoir plus sur le festival"
           >En savoir plus sur le festival</a
@@ -55,7 +49,7 @@ const alt = "Montagne";
       </header>
 
       <div
-        class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 justify-center items-center px-4 md:px-12 md:max-w-6xl md:mx-auto"
+        class="grid grid-cols-2 md:grid-cols-4 md:gap-10 justify-center items-center px-4 md:px-12 md:max-w-6xl md:mx-auto"
       >
         {
           featuredFilms.map((film) => (
@@ -70,7 +64,9 @@ const alt = "Montagne";
                   alt={`Affiche du film ${film.titre}`}
                 />
               </a>
-              <h3 class="text-center mt-2 md:text-lg">{film.titre}</h3>
+              <h2 class="text-center font-monserrat text-base md:text-base">
+                {film.titre}
+              </h2>
             </div>
           ))
         }
@@ -118,7 +114,7 @@ const alt = "Montagne";
       </header>
 
       <p
-        class="px-7 md:max-w-3xl lg:max-w-4xl mx-auto md:text-lg pb-8"
+        class="px-7 md:max-w-3xl lg:max-w-4xl mx-auto md:text-lg pb-8 lg:text-center"
       >
         L'écoresponsabilité est au cœur de notre festival. Nous nous engageons à
         réduire notre impact environnemental en privilégiant des pratiques
@@ -184,5 +180,5 @@ const alt = "Montagne";
         </a>
       </div>
     </section>
-</Fragment>
+  </Fragment>
 </LayoutWithHero>

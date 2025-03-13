@@ -2,32 +2,40 @@
 import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
 import { getInviteByName } from "../../../backend/backend.mjs";
 import Cardinvite from "../../components/Cardinvite.astro";
+import IconClap from "../../assets/icons/icon-clap.svg";
 const ByName = await getInviteByName();
 
-const title = "Cinémagny";
+const title = "Activités";
 const subTitle = "12 au 16 novembre 2025";
 const alt = "Montagne";
-import ImgHero from "../../assets/icons/img-montagne.svg";
 ---
 
-<LayoutWithHero t title={title}
-subTitle={subTitle}
-src={ImgHero}
-alt={alt}>
-<Fragment slot="content">
+<LayoutWithHero t title={title} subTitle={subTitle}>
+    <Fragment slot="content">
 
-     <ul
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto"
-        >
-            {
-                ByName.map((invite) => (
-                    <li class="flex justify-center">
-                        <Cardinvite {...invite} />
-                    </li>
-                ))
-            }
-        </ul>
- 
-        
-<Fragment>
-</LayoutWithHero>
+        <section>
+            <header>
+                <div class="flex justify-center items-center pb-8">
+                    <img
+                        class="w-17 md:w-25 lg:w-30"
+                        src={IconClap.src}
+                        alt="icone clap cinema"
+                        aria-hidden="true"
+                    />
+                </div>
+                <h2>Les Rencontres</h2>
+            </header>
+            <ul
+                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-13 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
+                {
+                    ByName.map((invite) => (
+                        <li >
+                            <Cardinvite {...invite} />
+                        </li>
+                    ))
+                }
+            </ul>
+        </section>
+        <Fragment> </Fragment>
+    </Fragment></LayoutWithHero
+>
