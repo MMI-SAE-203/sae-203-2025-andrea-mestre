@@ -1,13 +1,25 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import LayoutWithHero from "../layouts/LayoutWithHero.astro";
 import IconMontagne from "../assets/icons/icon-montain.svg";
 import IconPlanet from "../assets/icons/icon-planet.svg";
 import { getEquipe } from "../../backend/backend.mjs";
 const equipe = await getEquipe();
 import Cardequipe from "../components/Cardequipe.astro";
+import ImgHero from "../assets/icons/img-montagne.svg";
+
+const title = "Cinémagny";
+const subTitle = "12 au 16 novembre 2025";
+const alt = "Montagne";
 ---
 
-<Layout>
+<LayoutWithHero
+    title={title}
+    subTitle={subTitle}
+    src={ImgHero}
+    alt={alt}
+    >
+    <Fragment slot="content">
+        
     <div class="px-7 pt-16 md:max-w-3xl lg:max-w-4xl mx-auto">
         <p class="md:text-lg">
             Bienvenue au Festival Cinémagny, le rendez-vous incontournable du
@@ -116,5 +128,5 @@ import Cardequipe from "../components/Cardequipe.astro";
             }
         </ul>
     </section>
-</Layout>
-
+    </Fragment>
+</LayoutWithHero>

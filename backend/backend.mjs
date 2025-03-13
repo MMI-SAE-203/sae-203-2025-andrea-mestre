@@ -37,6 +37,7 @@ export async function getInviteByName() {
   try {
     let invites = await pb.collection("invite").getFullList({
       sort: "nom",
+      expand: "anime_activite",
     });
     invites = invites.map((invite) => {
       invite.photo = pb.files.getURL(invite, invite.photo);
@@ -153,4 +154,29 @@ export async function getEquipe() {
     console.error(error);
     return [];
   }
+}
+
+export async function formatDate(dateString) {
+  const date = new Date(dateString);
+
+  const months = [
+    "Janvier",
+    "Février",
+    "Mars",
+    "Avril",
+    "Mai",
+    "Juin",
+    "Juillet",
+    "Août",
+    "Septembre",
+    "Octobre",
+    "Novembre",
+    "Décembre",
+  ];
+
+  const day = date.getUTCDate();
+  const month = months[date.getUTCMonth()];
+  const hours = date.getUTCHours();
+
+  return `Le ${ day } ${ month } à ${ hours } h`;
 }

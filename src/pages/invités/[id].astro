@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getInviteById } from "../../../backend/backend.mjs";
+
+const { id } = Astro.params;
+const invite = await getInviteById(id);
+
+if (!invite) {
+    return Astro.redirect("/invités");
+}
+---
+
+<Layout>
+       <h1>{invite.nom}</h1>
+    
+</Layout>
