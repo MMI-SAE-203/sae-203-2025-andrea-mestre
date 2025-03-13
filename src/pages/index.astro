@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import LayoutWithHero from "../layouts/LayoutWithHero.astro";
 import Cardfilms from "../components/Cardfilms.astro";
 import { getFilmsFeatured } from "../../backend/backend.mjs";
 import Cardformule from "../components/Cardformule.astro";
@@ -11,12 +11,20 @@ const featuredFilms = await getFilmsFeatured(4);
 const formules = await getFormuleByPrice();
 import ImgHero from "../assets/icons/img-montagne.svg";
 
+const title = "Cinémagny";
+const subTitle = "12 au 16 novembre 2025";
+const alt = "Montagne";
 
 ---
 
-<Layout>
-  
-    <div class="px-7 pt-16 md:max-w-3xl lg:max-w-4xl mx-auto text-center">
+<LayoutWithHero
+  title={title}
+  subTitle={subTitle}
+  src={ImgHero}
+  alt={alt}
+  >
+<Fragment slot="content">
+    <div class="px-7 pt-16 md:max-w-3xl lg:max-w-4xl mx-auto ">
       <p class="pb-2.5 md:text-lg">
         Bienvenue à Cinémagny, le festival incontournable dédié à la célébration
         du 7e art sous toutes ses formes ! Ce rendez-vous unique offre une riche
@@ -110,7 +118,7 @@ import ImgHero from "../assets/icons/img-montagne.svg";
       </header>
 
       <p
-        class="px-7 md:max-w-3xl lg:max-w-4xl mx-auto text-center md:text-lg pb-8"
+        class="px-7 md:max-w-3xl lg:max-w-4xl mx-auto md:text-lg pb-8"
       >
         L'écoresponsabilité est au cœur de notre festival. Nous nous engageons à
         réduire notre impact environnemental en privilégiant des pratiques
@@ -147,7 +155,7 @@ import ImgHero from "../assets/icons/img-montagne.svg";
           <img
             src={IconIut.src}
             alt="icon-itu"
-            class="max-h-24 md:max-h-32 lg:max-h-40"
+            class="max-h-40 md:max-h-32 lg:max-h-40"
           />
         </a>
         <a
@@ -159,7 +167,7 @@ import ImgHero from "../assets/icons/img-montagne.svg";
           <img
             src={IconMmi.src}
             alt="icon-mmi"
-            class="max-h-24 md:max-h-32 lg:max-h-40"
+            class="max-h-50 md:max-h-32 lg:max-h-40"
           />
         </a>
         <a
@@ -171,10 +179,10 @@ import ImgHero from "../assets/icons/img-montagne.svg";
           <img
             src={IconVosges.src}
             alt="icon-vosges"
-            class="max-h-24 md:max-h-32 lg:max-h-40"
+            class="max-h-40 md:max-h-32 lg:max-h-40"
           />
         </a>
       </div>
     </section>
-  
-</Layout
+</Fragment>
+</LayoutWithHero>

@@ -30,7 +30,10 @@ const {
         <div>
             <slot name="chapo" />
         </div>
-        <Picture
+        <Picture 
+            pictureAttributes={{
+                class: "w-full h-auto",
+            }}
             formats={["avif", "webp"]}
             src={src}
             alt={alt}
