@@ -84,8 +84,25 @@ export async function getActiviteById(id) {
 }
 
 export async function getInviteById(id) {
-  const invite = await pb.collection("invite").getOne(id);
-  return invite;
+  try {
+    const invite = await pb.collection("invite").getOne(id, {
+      expand: "anime_activite",
+    });
+
+    invite.photo = pb.files.getURL(invite, invite.photo);
+
+    if (invite.expand?.anime_activite) {
+      invite.expand.anime_activite.photo = pb.files.getURL(
+        invite.expand.anime_activite,
+        invite.expand.anime_activite.photo
+      );
+    }
+
+    return invite;
+  } catch (error) {
+    console.error(error);
+    return {};
+  }
 }
 
 export async function getActiviteByInviteId(inviteId) {
@@ -198,3 +215,5 @@ export async function getActiviteType() {
     return [];
   }
 }
+
+
