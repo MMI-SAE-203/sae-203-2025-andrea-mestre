@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getInviteById } from "../../../backend/backend.mjs";
+import { formatDate } from "../../../backend/backend.mjs";
+
+const { id } = Astro.params;
+const invite = await getInviteById(id);
+
+const dateNaissance = invite.expand?.anime_activite?.date_activite
+    ? formatDate(invite.expand.anime_activite.date_activite)
+    : null;
+
+if (!invite) {
+    return Astro.redirect("/invités");
+}
+---
+
+<Layout>
+    <section>
+        <div class="flex justify-start items-center flex-col">
+            <img class="rounded-lg" src={invite.photo} alt="photo invite" />
+            <h1 class="text-6xl font-playfair-display drop-shadow-lg">
+                {invite.nom}
+                {invite.prenom}
+            </h1>
+            <p class="font-monserrat text-2xl">{dateNaissance}</p>
+            <p>{invite.metiers}</p>
+        </div>
+    </section>
+</Layout>

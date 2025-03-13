@@ -1,0 +1,28 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getFilmById } from "../../../backend/backend.mjs";
+const { id } = Astro.params;
+const film = await getFilmById(id);
+
+if (!film) {
+    return Astro.redirect("/films");
+}
+---
+
+<Layout>
+    <section>
+        <div class="flex justify-start items-center flex-col">
+            <img class="rounded-lg" src={film.affiche} alt="affiche du film" />
+            <h1 class="text-6xl font-playfair-display drop-shadow-lg">
+                {film.titre}
+            </h1>
+            <p class="font-monserrat text-2xl">{film.realisateur}</p>
+            <p>{film.genre}</p>
+            <p>{film.duree} minutes / {film.date_sortie} / {film.langue}</p>
+        </div>
+
+        <div>
+            <p set:html={film.synopsis}/>
+        </div>
+    </section>
+</Layout>

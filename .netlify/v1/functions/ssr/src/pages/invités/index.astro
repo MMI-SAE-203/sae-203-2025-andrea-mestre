@@ -1,0 +1,60 @@
+---
+import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
+import { getInviteByName } from "../../../backend/backend.mjs";
+import Cardinvite from "../../components/Cardinvite.astro";
+import CardExposition from "../../components/CardExposition.astro";
+import IconClap from "../../assets/icons/icon-clap.svg";
+const ByName = await getInviteByName();
+import { getActiviteType } from "../../../backend/backend.mjs";
+const activites = await getActiviteType();
+
+const title = "Activites";
+const subTitle = "12 au 16 novembre 2025";
+
+---
+
+<LayoutWithHero t title={title} subTitle={subTitle}>
+    <Fragment slot="content">
+
+        <section>
+            <header>
+                <div class="flex justify-center items-center pb-8">
+                    <img
+                        class="w-17 md:w-25 lg:w-30"
+                        src={IconClap.src}
+                        alt="icone clap cinema"
+                        aria-hidden="true"
+                    />
+                </div>
+                <h2>Les Rencontres</h2>
+            </header>
+            <ul
+                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-13 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
+                {
+                    ByName.map((invite) => (
+                        <li >
+                            <Cardinvite {...invite} />
+                        </li>
+                    ))
+                }
+            </ul>
+        </section>
+
+        <section>
+            <header>
+                <h2>Nos Expositions</h2>
+            </header>
+
+    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-13 sm:px-6 md:px-8">
+        {
+            activites.map((activite) => (
+                <li>
+                    <p> <CardExposition {...activite}/> </p>
+                </li>
+            ))
+        }
+    </ul>
+        </section>
+  
+    </Fragment>
+</LayoutWithHero>
