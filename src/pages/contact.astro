@@ -1,16 +1,63 @@
 ---
-import LayoutWithHero from "../layouts/LayoutWithHero.astro";
+import Layout from "../layouts/Layout.astro";
+import IconPlace from "../assets/icons/icon-location.svg";
+import IconPhone from "../assets/icons/icon-phone.svg";
+import IconMail from "../assets/icons/icon-mail.svg";
 const title = "Contact";
 ---
 
-<LayoutWithHero title="Contact">
-    <Fragment slot="content">
-        <section>
+<Layout>
+    <section>
+        <div
+            class="flex justify-center items-center flex-col md:flex-row md:space-x-10 md:space-y-0 space-y-5 pt-16"
+        >
+            <div class="pb-15">
+                <img
+                    src={IconPlace.src}
+                    alt="icon place"
+                    aria-hidden="true"
+                    class="w-10 mx-auto pb-2.5"
+                />
+                <a
+                    href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x47923b6072912405:0xae6781e11742ffe0?sa=X&ved=1t:8290&ictx=111"
+                >
+                    06 06 06 06 06</a
+                >
+            </div>
+            <div class="pb-15">
+                <img
+                    src={IconPhone.src}
+                    alt="icon téléphone"
+                    aria-hidden="true"
+                    class="w-10 mx-auto pb-2.5"
+                />
+                <a
+                    href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x47923b6072912405:0xae6781e11742ffe0?sa=X&ved=1t:8290&ictx=111"
+                >
+                    contactCinrmagny@gmail.com</a
+                >
+            </div>
+            <div>
+                <img
+                    src={IconMail.src}
+                    alt="icon Mail"
+                    aria-hidden="true"
+                    class="w-10 mx-auto pb-2.5"
+                />
+                <a
+                    href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x47923b6072912405:0xae6781e11742ffe0?sa=X&ved=1t:8290&ictx=111"
+                >
+                    7 Rue des Casernes, 90200 Giromagny</a
+                >
+            </div>
+        </div>
+
+        <div class="px-7 pt-16 md:max-w-3xl lg:max-w-4xl mx-auto">
             <form action="/api/contact" method="POST" class="space-y-6">
                 <div>
                     <label
                         for="nomComplet"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block font-medium text-gray-700 font-playfair text-2xl"
                         >Nom complet</label
                     >
                     <input
@@ -18,14 +65,14 @@ const title = "Contact";
                         name="nom_complet"
                         placeholder="Ex : Cristiano Ronaldo"
                         required
-                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
+                        class="mt-1 block w-full p-2 border border-black rounded-md shadow-sm"
                     />
                 </div>
 
                 <div>
                     <label
                         for="adresse_email"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block font-medium text-gray-700 font-playfair text-2xl"
                         >Adresse email</label
                     >
                     <input
@@ -33,14 +80,14 @@ const title = "Contact";
                         name="adresse_email"
                         placeholder="Ex : cristiano.ronaldoSUI@gmail.com"
                         required
-                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
+                        class="mt-1 block w-full p-2 border border-black rounded-md shadow-sm"
                     />
                 </div>
 
                 <div>
                     <label
                         for="Objet"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block font-medium text-gray-700 font-playfair text-2xl"
                         >Objet</label
                     >
                     <input
@@ -48,14 +95,14 @@ const title = "Contact";
                         name="objet"
                         placeholder="Ex : Demande de partenariat"
                         required
-                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
+                        class="mt-1 block w-full p-2 border border-black rounded-md shadow-sm"
                     />
                 </div>
 
                 <div>
                     <label
                         for="message"
-                        class="block text-sm font-medium text-gray-700"
+                        class="block font-medium text-gray-700 font-playfair text-2xl"
                         >Message</label
                     >
                     <textarea
@@ -63,19 +110,19 @@ const title = "Contact";
                         rows="4"
                         placeholder="Ex : SUIIII"
                         required
-                        class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
+                        class="mt-1 block w-full p-2 border border-black rounded-md shadow-sm"
                     ></textarea>
                 </div>
 
-                <div>
+                <div class="flex justify-center">
                     <button
                         type="submit"
-                        class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-blue focus:outline-none focus:ring-2 focus:ring-offset-2"
+                        class="uppercase py-3 p-7 shadow-sm text-white bg-blue hover:bg-brown focus:ring-2 focus:ring-offset-2"
                     >
                         Envoyer
                     </button>
                 </div>
             </form>
-        </section>
-    </Fragment>
-</LayoutWithHero>
+        </div>
+    </section>
+</Layout>
