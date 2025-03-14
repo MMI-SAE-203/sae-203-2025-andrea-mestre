@@ -1,7 +1,12 @@
 ---
-const {...membre} = Astro.props
+const { ...membre } = Astro.props;
 ---
 
-<div>
-    <h2>{membre.prenom}</h2>
+<div class="border px-10 py-6 rounded-lg flex flex-col items-center">
+    <div class="">
+        <img src={membre.photo} alt="equipe photo" />
+    </div>
+    <h2 class="py-5">{membre.prenom} {membre.nom}</h2>
+    <p class="text-2xl text-center">{membre.titre}</p>
+    <p class="text-center pt-3 text-xl">{membre.description}</p>
 </div>

@@ -13,10 +13,10 @@ import ImgHero from "../assets/icons/img-montagne.svg";
 
 const title = "Cinémagny";
 const subTitle = "12 au 16 novembre 2025";
-const alt = "Montagne";
+
 ---
 
-<LayoutWithHero title={title} subTitle={subTitle} src={ImgHero} alt={alt}>
+<LayoutWithHero title={title} subTitle={subTitle}>
   <Fragment slot="content">
     <div class="px-7 pt-16 md:max-w-3xl lg:max-w-4xl mx-auto">
       <p class="pb-2.5 md:text-lg lg:text-center">
@@ -44,25 +44,22 @@ const alt = "Montagne";
     </div>
 
     <section>
-      <header class="text-center mb-8">
+      <header class="text-center mb-8 pt-10">
         <h2 class="text-3xl md:text-4xl">Les Films à la Une</h2>
       </header>
 
       <div
-        class="grid grid-cols-2 md:grid-cols-4 md:gap-10 justify-center items-center px-4 md:px-12 md:max-w-6xl md:mx-auto"
-      >
+        class="grid grid-cols-2 md:grid-cols-4 md:gap-10 justify-center items-center px-4 md:px-12 md:max-w-6xl md:mx-auto">
         {
           featuredFilms.map((film) => (
             <div class="flex flex-col items-center">
               <a
                 href={`/films/${film.id}`}
-                class="w-36 h-56 md:w-56 md:h-80 lg:w-64 lg:h-96 mx-auto overflow-hidden rounded-lg"
-              >
+                class="w-36 h-56 md:w-56 md:h-80 lg:w-64 lg:h-96 mx-auto overflow-hidden rounded-lg">
                 <img
                   class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   src={film.affiche}
-                  alt={`Affiche du film ${film.titre}`}
-                />
+                  alt={`Affiche du film ${film.titre}`}/>
               </a>
               <h2 class="text-center font-monserrat text-base md:text-base">
                 {film.titre}
@@ -73,12 +70,7 @@ const alt = "Montagne";
       </div>
 
       <div class="flex justify-center items-center mt-4 md:mt-8">
-        <a
-          class="button bg-blue"
-          href="/films"
-          aria-label="Voir la programmation complète"
-          >La programmation complète</a
-        >
+        <a class="button bg-blue" href="/films"aria-label="Voir la programmation complète">La programmation complète</a>
       </div>
     </section>
 
@@ -88,8 +80,7 @@ const alt = "Montagne";
       </header>
 
       <ul
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 px-4 md:px-12 max-w-7xl mx-auto justify-items-center"
-      >
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 px-4 md:px-12 max-w-7xl mx-auto justify-items-center">
         {
           formules.map((formule) => (
             <li class="w-full max-w-sm">
@@ -114,8 +105,7 @@ const alt = "Montagne";
       </header>
 
       <p
-        class="px-7 md:max-w-3xl lg:max-w-4xl mx-auto md:text-lg pb-8 lg:text-center"
-      >
+        class="px-7 md:max-w-3xl lg:max-w-4xl mx-auto md:text-lg pb-8 lg:text-center">
         L'écoresponsabilité est au cœur de notre festival. Nous nous engageons à
         réduire notre impact environnemental en privilégiant des pratiques
         durables, de l'utilisation de matériaux recyclés à la promotion de
