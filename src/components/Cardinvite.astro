@@ -1,6 +1,7 @@
 ---
 const { ...invite } = Astro.props;
 import { formatDate } from "../../backend/backend.mjs";
+import ImagePB from "./ImagePB.astro";
 
 const date = invite.expand?.anime_activite?.date_activite
   ? formatDate(invite.expand.anime_activite.date_activite)
@@ -15,10 +16,10 @@ const activiteTitle = invite.expand?.anime_activite?.titre || null;
   {
     invite.photo ? (
       <div class="relative w-full h-56 overflow-hidden">
-        <img
+        <ImagePB
           src={invite.photo}
           alt={`Photo de ${invite.prenom} ${invite.nom}`}
-          class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          classImg="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
         />
       </div>
     ) : (

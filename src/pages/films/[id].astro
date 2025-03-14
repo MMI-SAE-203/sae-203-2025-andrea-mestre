@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getFilmById } from "../../../backend/backend.mjs";
+import ImagePB from "../../components/ImagePB.astro";
 const { id } = Astro.params;
 const film = await getFilmById(id);
 
@@ -12,7 +13,11 @@ if (!film) {
 <Layout>
     <section>
         <div class="flex justify-start items-center flex-col">
-            <img class="rounded-lg" src={film.affiche} alt="affiche du film" />
+            <ImagePB
+                class="rounded-lg"
+                src={film.affiche}
+                alt="affiche du film"
+            />
             <h1 class="text-6xl font-playfair-display drop-shadow-lg">
                 {film.titre}
             </h1>
@@ -22,7 +27,7 @@ if (!film) {
         </div>
 
         <div>
-            <p set:html={film.synopsis}/>
+            <p set:html={film.synopsis} />
         </div>
     </section>
 </Layout>

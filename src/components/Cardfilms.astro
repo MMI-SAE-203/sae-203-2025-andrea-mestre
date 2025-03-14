@@ -1,13 +1,16 @@
 ---
 const { ...film } = Astro.props;
+import ImagePB from "./ImagePB.astro";
 ---
 
 <a href={`/films/${film.id}`} class="flex justify-center items-center flex-col">
-    <img
-        class="transform transition-all duration-300 hover:scale-105 hover:shadow-lg rounded-lg overflow-hidden"
+    
+    <ImagePB
         src={film.affiche}
         alt="affiche film"
+        classImg="transform transition-all duration-300 hover:scale-105 hover:shadow-lg rounded-lg overflow-hidden"
     />
+
     <h3 class="font-monserrat text-2xl pt-2">{film.titre}</h3>
     <p class="text-sm">{film.realisateur}</p>
 </a>

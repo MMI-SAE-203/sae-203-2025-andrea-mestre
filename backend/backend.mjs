@@ -73,7 +73,7 @@ export async function getActiviteById(id) {
   const activite = await pb.collection("activite").getOne(id, {
     expand: "anime_invite",
   });
-  activite.img = pb.files.getURL(activite, activite.img);
+  activite.image = pb.files.getURL(activite, activite.image);
 
   if (activite.expand?.anime_invite) {
     activite.expand.anime_invite.img = pb.files.getURL(

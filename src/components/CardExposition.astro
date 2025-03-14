@@ -1,6 +1,7 @@
 ---
 const { ...activite } = Astro.props;
 import { formatDate } from "../../backend/backend.mjs";
+import ImagePB from "./ImagePB.astro";
 
 const date = activite.date_activite ? formatDate(activite.date_activite) : null;
 ---
@@ -11,10 +12,10 @@ const date = activite.date_activite ? formatDate(activite.date_activite) : null;
     {
         activite.image ? (
             <div class="relative w-full h-56 overflow-hidden">
-                <img
+                <ImagePB
                     src={activite.image}
                     alt={`Photo de l'activité ${activite.titre_activite}`}
-                    class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    classImg="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />
             </div>
         ) : (
